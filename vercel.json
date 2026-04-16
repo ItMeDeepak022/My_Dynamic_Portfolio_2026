@@ -1,16 +1,12 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/dashboard/(.*)",
-      "dest": "https://fronted-dashboard-deploy.vercel.app/dashboard/$1"
+      "source": "/dashboard",
+      "destination": "https://fronted-dashboard-deploy.vercel.app"
     },
     {
-      "src": "/dashboard",
-      "dest": "https://fronted-dashboard-deploy.vercel.app/dashboard"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/dashboard/:path*",
+      "destination": "https://fronted-dashboard-deploy.vercel.app/:path*"
     }
   ]
 }
