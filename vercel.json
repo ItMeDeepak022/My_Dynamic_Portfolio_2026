@@ -1,8 +1,9 @@
 {
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/dashboard/:path*",
-      "destination": "https://fronted-dashboard-deploy.vercel.app/:path*"
+      "source": "/dashboard",
+      "destination": "https://fronted-dashboard-deploy.vercel.app",
+      "permanent": false
     }
   ]
 }
