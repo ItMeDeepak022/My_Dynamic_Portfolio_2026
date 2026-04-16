@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "src": "/dashboard/(.*)",
+      "dest": "https://fronted-dashboard-deploy.vercel.app/dashboard/$1"
+    },
+    {
+      "src": "/dashboard",
+      "dest": "https://fronted-dashboard-deploy.vercel.app/dashboard"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
