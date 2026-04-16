@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/dashboard",
-      "destination": "https://fronted-dashboard-deploy.vercel.app"
-    },
-    {
       "source": "/dashboard/:path*",
       "destination": "https://fronted-dashboard-deploy.vercel.app/:path*"
     }
