@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // styles
@@ -7,8 +7,26 @@ import "swiper/css/pagination";
 
 // modules
 import { Autoplay, Pagination } from "swiper/modules";
+import axios from "axios";
 
 export default function Projects() {
+
+    const [project, setproject] = useState([]);
+
+    let myproject = () => {
+        axios.get("https://my-portfolio-backend-2026.onrender.com/portfolio-API/project-data")
+            .then((res) => res.data).then((finalRes) => {
+                // console.log(finalRes);
+                setproject(finalRes.data)
+            })
+
+
+    }
+
+    useEffect(() => {
+        myproject();
+    }, []);
+
     return (
         <section id='Projects' className="py-16 px-6 md:px-12 lg:px-20 bg-white text-black">
 
@@ -33,92 +51,44 @@ export default function Projects() {
                     }}
                 >
 
-                    {/* Card 1 */}
-                    <SwiperSlide>
-                        <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 border border-purple-600 hover:-translate-y-2">
+                    {
+                        project.map((obj, index) => {
+                            let { projectTitle, aboutProject, projectLink, projectImg } = obj
+                           
+                            return (
 
-                            <img src="project1.jpg" alt="Project 1" className="w-full h-65 object-cover" />
+                                < SwiperSlide >
+                                    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 border border-purple-600 hover:-translate-y-2">
 
-                            <div className="p-6 bg-gray-200 text-black ">
-                                <h3 className="text-2xl font-bold mb-3">Project Name</h3>
-                                <p className="text-gray-700 mb-4">
-                                    Brief description of your project and the technologies used.
-                                </p>
+                                        <img src={projectImg} alt="Project 1" className="w-full h-65 object-fill" />
 
-                                <a href="#" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition">
-                                    Live View
-                                </a>
-                            </div>
+                                        <div className="p-6 bg-gray-200 text-black ">
+                                            <h3 className="text-2xl font-bold mb-3"> {projectTitle} </h3>
+                                            <p className="text-gray-700 mb-4">
+                                                {aboutProject}
+                                            </p>
 
-                        </div>
-                    </SwiperSlide>
+                                            <a href={projectLink} className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition">
+                                                Live View
+                                            </a>
+                                        </div>
 
-                     
-                    {/* Card 1 */}
-                    <SwiperSlide>
-                        <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 border border-purple-600 hover:-translate-y-2">
+                                    </div>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
 
-                            <img src="project1.jpg" alt="Project 1" className="w-full h-65 object-cover" />
 
-                            <div className="p-6 bg-gray-200 text-black ">
-                                <h3 className="text-2xl font-bold mb-3">Project Name</h3>
-                                <p className="text-gray-700 mb-4">
-                                    Brief description of your project and the technologies used.
-                                </p>
 
-                                <a href="#" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition">
-                                    Live View
-                                </a>
-                            </div>
 
-                        </div>
-                    </SwiperSlide>
 
-                    
-                    {/* Card 1 */}
-                    <SwiperSlide>
-                        <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 border border-purple-600 hover:-translate-y-2">
 
-                            <img src="project1.jpg" alt="Project 1" className="w-full h-65 object-cover" />
 
-                            <div className="p-6 bg-gray-200 text-black ">
-                                <h3 className="text-2xl font-bold mb-3">Project Name</h3>
-                                <p className="text-gray-700 mb-4">
-                                    Brief description of your project and the technologies used.
-                                </p>
 
-                                <a href="#" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition">
-                                    Live View
-                                </a>
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-
-                    
-                    {/* Card 1 */}
-                    <SwiperSlide>
-                        <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 border border-purple-600 hover:-translate-y-2">
-
-                            <img src="project1.jpg" alt="Project 1" className="w-full h-65 object-cover" />
-
-                            <div className="p-6 bg-gray-200 text-black ">
-                                <h3 className="text-2xl font-bold mb-3">Project Name</h3>
-                                <p className="text-gray-700 mb-4">
-                                    Brief description of your project and the technologies used.
-                                </p>
-
-                                <a href="#" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition">
-                                    Live View
-                                </a>
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-                    
                 </Swiper>
 
             </div>
-        </section>
+        </section >
     );
 }

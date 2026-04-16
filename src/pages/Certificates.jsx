@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Swiper styles
@@ -7,8 +7,25 @@ import "swiper/css/pagination";
 
 // Modules
 import { Autoplay, Pagination } from "swiper/modules";
+import axios from "axios";
 
 export default function Certificates() {
+    const [Certificate, setCertificate] = useState([]);
+
+    let myCertificate = () => {
+        axios.get("https://my-portfolio-backend-2026.onrender.com/portfolio-API/certificate-data")
+            .then((res) => res.data).then((finalRes) => {
+                // console.log(finalRes);
+                setCertificate(finalRes.data)
+            })
+
+
+    }
+
+    useEffect(() => {
+        myCertificate();
+    }, []);
+
     return (
         <section id="Certificates" className="w-full py-16 bg-white">
 
@@ -36,53 +53,40 @@ export default function Certificates() {
                     }}
                 >
 
-                    {/* Certificate 1 */}
-                    < SwiperSlide >
-                        <div className="border border-blue-500 sm:w-[70%] mx-auto sm:h-[400px] w-full bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300 overflow-hidden">
 
-                            <div className="bg-gray-100 flex justify-center items-center sm:h-[300px] h-[250px]">
-                                <img
-                                    src="certificate1.jpg"
-                                    alt="Certificate"
-                                    className="h-full object-contain"
-                                />
-                            </div>
+                    {
+                        Certificate.map((obj, index) => {
+                            let { certificateImg, certificatePdf, certificateTitle } = obj
 
-                            <div className="p-5 text-center flex-1">
-                                <h3 className="text-lg font-bold text-black mb-2">
-                                    MERN Stack Certification
-                                </h3>
-                                <p className="text-blue-600 font-semibold">
-                                    Issued by WsCube Tech
-                                </p>
-                            </div>
+                            return (
+                                < SwiperSlide >
+                                    <div className="border border-blue-500 sm:w-[70%] mx-auto sm:h-[400px] w-full bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300 overflow-hidden">
 
-                        </div>
-                    </SwiperSlide>
+                                        <div className="bg-gray-100 flex justify-center items-center sm:h-[300px] h-[250px]">
+                                            <a href={certificatePdf} className="w-full h-full">
+                                                <img
+                                                    src={certificateImg}
+                                                    alt="Certificate"
+                                                    className="w-full h-full object-contain sm:object-fill"
+                                                />
+                                            </a>
+                                        </div>
 
-                    {/* Certificate 2 */}
-                    < SwiperSlide >
-                        <div className="border border-blue-500 sm:w-[70%] mx-auto sm:h-[400px] w-full bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300 overflow-hidden">
+                                        <div className="p-5 text-center flex-1">
+                                            <h3 className="text-lg font-bold text-black mb-2">
+                                                {certificateTitle}
+                                            </h3>
 
-                            <div className="bg-gray-100 flex justify-center items-center sm:h-[300px] h-[250px]">
-                                <img
-                                    src="certificate1.jpg"
-                                    alt="Certificate"
-                                    className="h-full object-contain"
-                                />
-                            </div>
+                                        </div>
 
-                            <div className="p-5 text-center flex-1">
-                                <h3 className="text-lg font-bold text-black mb-2">
-                                    MERN Stack Certification
-                                </h3>
-                                <p className="text-blue-600 font-semibold">
-                                    Issued by WsCube Tech
-                                </p>
-                            </div>
+                                    </div>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
 
-                        </div>
-                    </SwiperSlide>
+
+
 
                 </Swiper>
 

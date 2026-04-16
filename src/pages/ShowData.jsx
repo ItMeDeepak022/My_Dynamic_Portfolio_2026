@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
@@ -12,6 +13,37 @@ export default function ShowData() {
         loop: true,
         delaySpeed: 2500,
     })
+
+    let [profileData, setprofileData] = useState([])
+    let [resumeData, setresumeData] = useState([])
+
+    let getmyProfile = () => {
+
+        axios.get('https://my-portfolio-backend-2026.onrender.com/portfolio-API/profile-data')
+            .then((res) => res.data)
+            .then((finalRes) => {
+                // console.log(finalRes);
+                setprofileData(finalRes.data)
+            })
+    }
+
+    let getmyResume = () => {
+
+        axios.get('https://my-portfolio-backend-2026.onrender.com/portfolio-API/resume-data')
+            .then((res) => res.data)
+            .then((finalRes) => {
+                // console.log(finalRes);
+                setresumeData(finalRes.data)
+            })
+    }
+
+
+
+
+    useEffect(() => {
+        getmyProfile(),
+            getmyResume()
+    }, [])
 
     return (
 
@@ -50,15 +82,23 @@ export default function ShowData() {
                         </div>
                     </div>
 
-                    <div className='flex justify-center items-center gap-3 text-white font-bold sm:mt-5 mt-5 group-hover:active:select-all'>
-                        <button className='cursor-pointer px-4 sm:py-3 py-3 bg-[blue] rounded-2xl hover:bg-[purple] hover:scale-102 hover:text-cyan-400 
+
+                    {
+                        resumeData.map((obj, index) => {
+                            return (
+                                <div className='flex justify-center items-center gap-3 text-white font-bold sm:mt-5 mt-5 group-hover:active:select-all'>
+                                    <button className='cursor-pointer px-4 sm:py-3 py-3 bg-[blue] rounded-2xl hover:bg-[purple] hover:scale-102 hover:text-cyan-400 
            hover:shadow-md hover:shadow-cyan-500/50 
            transition duration-300 '> <a href="#Contact" >Get Touch</a> </button>
-                        <button className='cursor-pointer px-4 sm:py-3 py-3 bg-[blue] rounded-2xl hover:bg-[purple] hover:scale-102 hover:text-cyan-400 
+
+                                    <button className='cursor-pointer px-4 sm:py-3 py-3 bg-[blue] rounded-2xl hover:bg-[purple] hover:scale-102 hover:text-cyan-400 
            hover:shadow-md hover:shadow-cyan-500/50 
-           transition duration-300'> <a href="https://itmedeepak022.github.io/-Portfolio-/images/Deepak054.pdf"
-                            >Download CV</a> </button>
-                    </div>
+           transition duration-300'> <a href={obj.resumeLetter}
+                                        >Download CV</a> </button>
+                                </div>
+                            )
+                        })
+                    }
 
 
 
@@ -69,13 +109,20 @@ export default function ShowData() {
 
                 {/* Right Part */}
                 <div className="sm:max-w-[30%] max-w-[100%] flex justify-center">
-                    <div className="sm:w-80 w-70 h-70 bg-white  sm:h-80 rounded-full border-5 border-blue-500 hover:border-[purple] transition-all duration-300 overflow-hidden shadow-2xl">
-                        <img
-                            src="https://media.licdn.com/dms/image/v2/D5603AQGSg9ek5m4Oww/profile-displayphoto-scale_200_200/B56ZwJK7dBIUAc-/0/1769680387798?e=1777507200&v=beta&t=_PLJ-ISrE-PXhXZ8SAnmWupgVqeoZtPBFeSeqlXhlaQ"
-                            alt="Profile"
-                            className="w-full h-full object-fill"
-                        />
-                    </div>
+                    {
+                        profileData.map((obj, index) => {
+
+                            return (
+                                <div key={index} className="sm:w-80 w-70 h-70 bg-white  sm:h-80 rounded-full border-5 border-blue-500 hover:border-[purple] transition-all duration-300 overflow-hidden shadow-2xl">
+                                    <img
+                                        src={obj.profileImg}
+                                        alt="Profile"
+                                        className="w-full h-[100%] object-fill"
+                                    />
+                                </div>
+                            )
+                        })
+                    }
                 </div>
 
 

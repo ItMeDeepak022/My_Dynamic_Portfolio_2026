@@ -1,6 +1,22 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 
 export default function About() {
+    let [profileData, setprofileData] = useState([])
+    let getmyProfile = () => {
+
+        axios.get('https://my-portfolio-backend-2026.onrender.com/portfolio-API/profile-data')
+            .then((res) => res.data)
+            .then((finalRes) => {
+                // console.log(finalRes);
+                setprofileData(finalRes.data)
+            })
+    }
+
+    useEffect(() => {
+        getmyProfile()
+    }, [])
+    
     return (
 
         <>
@@ -12,13 +28,19 @@ export default function About() {
 
                     {/* Left Side - Profile Image */}
                     <div className="sm:max-w-[30%] max-w-[100%] flex justify-center">
-                        <div className="sm:w-80 w-70 h-70 bg-white  sm:h-80 rounded-full border-5 border-blue-500 hover:border-[purple] transition-all duration-300 overflow-hidden shadow-2xl">
-                            <img
-                                src="https://media.licdn.com/dms/image/v2/D5603AQGSg9ek5m4Oww/profile-displayphoto-scale_200_200/B56ZwJK7dBIUAc-/0/1769680387798?e=1777507200&v=beta&t=_PLJ-ISrE-PXhXZ8SAnmWupgVqeoZtPBFeSeqlXhlaQ"
-                                alt="Profile"
-                                className="w-full h-full object-fill"
-                            />
-                        </div>
+                        {
+                            profileData.map((obj, index) => {
+                                return (
+                                    <div key={index} className="sm:w-80 w-70 h-70 bg-white  sm:h-80 rounded-full border-5 border-blue-500 hover:border-[purple] transition-all duration-300 overflow-hidden shadow-2xl">
+                                        <img
+                                            src={obj.profileImg}
+                                            alt="Profile"
+                                            className="w-full h-[100%] object-fill"
+                                        />
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
 
                     {/* Right Side - About Content */}
