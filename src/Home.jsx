@@ -11,6 +11,7 @@ import Projects from './pages/Projects'
 import Certificates from './pages/Certificates'
 import Contact from './pages/Contact'
 import axios from 'axios'
+import Education from './pages/Educational'
 
 export default function Home() {
 
@@ -54,7 +55,8 @@ export default function Home() {
     <div>
       <Header />
       <ShowData  />
-      <About />
+      <About/>
+      <Education/>
       <Service />
       <Skills />
       <Internship />
