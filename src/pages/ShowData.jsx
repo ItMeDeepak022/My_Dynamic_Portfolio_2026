@@ -113,11 +113,17 @@ export default function ShowData() {
                         profileData.map((obj, index) => {
 
                             return (
-                                <div key={index} className="sm:w-80 w-70 h-70 bg-white  sm:h-80 rounded-full border-5 border-blue-500 hover:border-[purple] transition-all duration-300 overflow-hidden shadow-2xl">
+                                 
+                                <div
+                                    key={index}
+                                    className="relative sm:w-80 w-70 sm:h-80 h-70 rounded-full border-4 border-blue-500 hover:border-purple-500 transition-all duration-300 overflow-hidden bg-gray-100 flex items-start justify-center"
+                                >
                                     <img
                                         src={obj.profileImg}
                                         alt="Profile"
-                                        className="w-full h-[100%] object-fill"
+                                        className="w-full  object-contain object-top
+                                        absolute top-[-30px] left-[-5px]  
+                                        "
                                     />
                                 </div>
                             )
