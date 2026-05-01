@@ -122,7 +122,7 @@ export default function ShowData() {
                                         src={obj.profileImg}
                                         alt="Profile"
                                         className="w-full  object-contain object-top
-                                        absolute top-[-30px] left-[-5px]  
+                                        absolute top-[-15px] left-[-5px]  
                                         "
                                     />
                                 </div>

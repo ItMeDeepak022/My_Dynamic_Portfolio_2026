@@ -8,7 +8,7 @@ const educationData = [
     {
         title: "Intermediate (12th)",
         school: "SHIVAJI INTER College KHUKHUNDU , Deoria",
-        year: "2022",
+        year: "2021",
         percentage: "80.6%",
     },
     {
