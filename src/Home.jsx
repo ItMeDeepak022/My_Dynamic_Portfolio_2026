@@ -12,11 +12,12 @@ import Certificates from './pages/Certificates'
 import Contact from './pages/Contact'
 import axios from 'axios'
 import Education from './pages/Educational'
+import { Cursor, useTypewriter } from 'react-simple-typewriter'
 
 export default function Home() {
 
   let [loading, setloading] = useState(false)
-  
+
 
   let getmyProfile = () => {
     setloading(true)
@@ -25,7 +26,7 @@ export default function Home() {
       .then((finalRes) => {
         // console.log(finalRes);
         setloading(false)
-        
+
       })
   }
 
@@ -33,11 +34,18 @@ export default function Home() {
     getmyProfile()
   }, [])
 
-  if (loading) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-black backdrop-blur-md z-50">
+  const [text] = useTypewriter({
+    words: ['.','..','...','....'],
+    loop: true,
+    delaySpeed: 2500,
+  })
 
-        <div className="relative flex items-center justify-center">
+  if (loading) {
+
+    return (
+      <div className="fixed inset-0 flex flex-col gap-5 items-center justify-center bg-black backdrop-blur-md z-50">
+
+        <div className="relative flex  items-center justify-center">
 
           {/* Outer Pulse Circle */}
           <div className="absolute w-20 h-20 rounded-full bg-[purple] opacity-30 animate-ping"></div>
@@ -46,7 +54,10 @@ export default function Home() {
           <div className="w-18 h-18 border-8 border-dotted border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
 
         </div>
-
+        <div className='text-white font-bold text-4xl'>
+          loading{text} 
+          <Cursor />
+        </div>
       </div>
     );
   }
@@ -54,9 +65,9 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <ShowData  />
-      <About/>
-      <Education/>
+      <ShowData />
+      <About />
+      <Education />
       <Service />
       <Skills />
       <Internship />

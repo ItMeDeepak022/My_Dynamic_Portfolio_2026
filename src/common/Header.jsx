@@ -13,7 +13,7 @@ export default function Header() {
     let navbar = ["About", "Service", "Skills", "Internship", "Projects", "Certificates", "Contact"]
 
     return (
-        <section className='relative sticky top-0 z-50 backdrop-blur-md bg-white/10 border-b border-white/20'>
+        <section className='sticky top-0 z-50 backdrop-blur-md bg-white/10 border-b border-white/20'>
 
             <header className="sm:max-w-[90%] max-w-[95%] mx-auto rounded-full mt-2 bg-white backdrop-blur-lg border border-white hover:border-blue-600 transition duration-300 shadow-[0_0_3px_rgba(0,0,0,0.2)] text-black">
 
