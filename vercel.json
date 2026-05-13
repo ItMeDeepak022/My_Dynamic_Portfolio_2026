@@ -1,7 +1,7 @@
 {
   "redirects": [
     {
-      "source": "/dashboard",
+      "source": "/admin",
       "destination": "https://fronted-dashboard-deploy.vercel.app",
       "permanent": false
     }
