@@ -4,14 +4,14 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { Link } from 'react-router';
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import {  Cursor, useTypewriter } from "react-simple-typewriter";
 
 export default function ShowData() {
 
     const [text] = useTypewriter({
         words: ["Frontend Developer...", "Web Developer...", "MERN Stack Developer..."],
         loop: true,
-        delaySpeed: 2500,
+        delaySpeed:200,
     })
 
     let [profileData, setprofileData] = useState([])
@@ -56,13 +56,13 @@ export default function ShowData() {
                         Hi, I'm <span className="text-blue-500">Deepak Kushwaha</span>
                     </h1>
 
-                    <div className="sm:text-3xl text-2xl sm:font-semibold font-bold sm:p-0 p-2">
-                        <span className="text-purple-500 font-bold">
+                    <div className="sm:text-3xl text-2xl sm:font-semibold font-bold sm:p-[15px_0px] sm:p-0 p-2">
+                        <span className="text-purple-500 font-bold sm:text-[40px] text-[25px]">
                             {text}
-                            <Cursor />
+                            <Cursor/>
                         </span>
                     </div>
-                    <p className="text-gray-700 mt-1 max-w-md">
+                    <p className="w-full text-gray-700 mt-1 ">
                         Passionate about creating beautiful & full responsive & functional web experiences.
                     </p>
                     <div className='BTNs w-[80%] sm:w-[50%] mx-auto  mt-4 flex justify-center sm:gap-10 gap-5 items-center py-3'>

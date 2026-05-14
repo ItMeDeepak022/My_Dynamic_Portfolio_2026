@@ -37,7 +37,7 @@ export default function Home() {
   const [text] = useTypewriter({
     words: ['.','...','....','.....'],
     loop: true,
-    delaySpeed:300,
+    delaySpeed:200,
   })
 
   if (loading) {
