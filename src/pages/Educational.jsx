@@ -26,13 +26,13 @@ export default function Education() {
                 Education
             </h2>
 
-            <div className="max-w-4xl sm:mx-auto mx-auto relative border-l-4 border-blue-500 sm:pl-6 pl-5 ml-5">
+            <div className="max-w-4xl sm:mx-auto mx-auto relative sm:border-l-4 border-blue-500 sm:pl-6 pl-5 ml-5">
                 {educationData.map((edu, index) => (
                     <div key={index} className="mb-10 relative">
 
                         {/* Circle */}
-                        <div className="absolute sm:left-[-10px] left-[-5px] top-10 w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow-md"></div>
-                        <div className="absolute sm:left-[-24px] left-[-20px] top-[26px] text-blue-500 text-4xl font-extrabold"> — </div>
+                        <div className="absolute sm:left-[-10px] left-[-5px]  sm:block hidden top-10 w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow-md"></div>
+                        <div className="absolute sm:left-[-24px] left-[-20px] sm:block hidden top-[26px] text-blue-500 text-4xl font-extrabold"> — </div>
 
                         {/* Card */}
                         <div className="sm:p-0 p-2">
