@@ -22,7 +22,7 @@ const educationData = [
 export default function Education() {
     return (
         <div className="py-12 bg-gray-50">
-            <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
+            <h2 className="sm:text-4xl text-3xl  w-[70%] mx-auto sm:p-3 p-2 font-bold text-center mb-10 text-gray-800 border-b-2 border-t-2 border-slate-200">
                 Education
             </h2>
 
@@ -35,7 +35,7 @@ export default function Education() {
                         <div className="absolute sm:left-[-24px] left-[-20px] sm:block hidden top-[26px] text-blue-500 text-4xl font-extrabold"> — </div>
 
                         {/* Card */}
-                        <div className="sm:p-0 p-2">
+                        <div className="sm:p-0 p-2 sm:mr-0 mr-10">
                             <div className="p-4 border-2 border-[purple] rounded-[10px]  hover:border-[cyan] transition-all duration-300">
 
                                 <h3 className="text-xl font-semibold text-blue-600">
