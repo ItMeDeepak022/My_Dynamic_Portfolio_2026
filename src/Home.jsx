@@ -35,27 +35,27 @@ export default function Home() {
   }, [])
 
   const [text] = useTypewriter({
-    words: ['.','...','....','.....'],
+    words: ['loading...'],
     loop: true,
-    delaySpeed:200,
+    delaySpeed:1100,
   })
 
   if (loading) {
 
     return (
-      <div className="fixed inset-0 flex flex-col gap-5 items-center justify-center bg-black backdrop-blur-md z-50">
+      <div className="fixed inset-0 flex flex-col gap-10 items-center justify-center bg-black backdrop-blur-md z-50">
 
         <div className="relative flex  items-center justify-center">
 
           {/* Outer Pulse Circle */}
-          <div className="absolute w-20 h-20 rounded-full bg-[purple] opacity-30 animate-ping"></div>
+          <div className="absolute w-20 h-20 rounded-full bg-[purple] opacity-30 animate-ping delay-1000"></div>
 
           {/* Inner Spinner */}
-          <div className="w-18 h-18 border-8 border-dotted border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-18 h-18 border-8  border-[cyan] border-t-transparent delay-1000 rounded-full animate-spin"></div>
 
         </div>
-        <div className='text-white font-bold text-4xl'>
-          loading{text} 
+        <div className='text-white font-bold text-4xl '>
+          {text} 
           <Cursor />
         </div>
       </div>
