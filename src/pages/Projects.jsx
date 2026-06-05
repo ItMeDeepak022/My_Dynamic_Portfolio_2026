@@ -28,7 +28,7 @@ export default function Projects() {
     }, []);
 
     return (
-        <section id='Projects' className="py-16 px-6 md:px-12 lg:px-20 bg-white text-black">
+        <section id='Projects' className="py-16 px-4 md:px-12 lg:px-20 bg-white text-black">
 
             <div className="max-w-[1320px]  mx-auto">
 
@@ -62,7 +62,7 @@ export default function Projects() {
 
                                         <img src={projectImg} alt="Project 1" className="w-full h-65 object-fill" />
 
-                                        <div className="p-6 bg-gray-200 text-black ">
+                                        <div className="sm:p-6 p-3 bg-gray-200 text-black ">
                                             <h3 className="text-2xl font-bold mb-3"> {projectTitle} </h3>
                                             <p className="text-gray-700 mb-4">
                                                 {aboutProject}
