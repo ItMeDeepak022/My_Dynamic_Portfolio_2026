@@ -40,7 +40,7 @@ export default function Internship() {
                     spaceBetween={30}
                     loop={true}
                     autoplay={{ delay: 2500 }}
-                    pagination={{ clickable: true }}
+                    pagination={{ clickable:true }}
                 >
 
                     {intern.map((obj, index) => {

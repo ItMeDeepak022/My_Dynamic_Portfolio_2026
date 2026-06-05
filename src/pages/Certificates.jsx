@@ -27,7 +27,7 @@ export default function Certificates() {
     }, []);
 
     return (
-        <section id="Certificates" className="w-full py-16 bg-white">
+        <section id="Certificates" className="w-full py-16 bg-gray-100">
 
             {/* Heading */}
             <h2 className="text-3xl sm:text-4xl font-bold text-center text-black sm:mb-12 mb-5">

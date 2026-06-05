@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Service() {
     return (
-        <section  id='Service' className=" w-full sm:py-20 py-16 bg-gray-100 text-black">
+        <section  id='Service' className=" w-full sm:py-20 py-16  bg-white text-black">
             <div className="max-w-6xl mx-auto px-4 text-center">
 
                 {/* Heading */}

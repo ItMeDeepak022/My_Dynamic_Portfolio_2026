@@ -49,22 +49,20 @@ export default function About() {
                     </div>
 
                     {/* Right Side - About Content */}
-                    <div className="md:w-full sm:text-justify  text-justify p-1">
+                    <div className="md:w-full sm:text-justify p-2 text-lg text-justify">
 
-
-
-                        <p className="text-gray-800 text-lg leading-relaxed mb-4">
-                            Hi, I'm <span className="text-blue-600 font-semibold">Deepak Kushwaha</span>,
-                            a passionate <span className="text-blue-600">Frontend Developer</span>,
-                            <span className="text-blue-600"> MERN Stack Developer</span>, and
-                            <span className="text-blue-600"> Web Developer</span>.
+                      <p className="text-gray-800 sm:leading-relaxed mb-3 ">
+                            Hi, I'm <span className="text-purple-500 font-semibold">Deepak Kushwaha</span>,
+                            a passionate <span className="text-purple-500">Frontend Developer</span>,
+                            <span className="text-purple-500"> MERN Stack Developer</span>, and
+                            <span className="text-purple-500"> Web Developer</span>.
                             I specialize in building responsive, modern, and user-friendly web applications
                             using technologies like React.js, JavaScript, Tailwind CSS, Node.js, Express, and MongoDB.
                         </p>
 
                         <p className="text-gray-700 mb-4">
-                            I have strong experience in <span className="text-blue-600 font-medium">API Integration</span>
-                            and working with <span className="text-blue-600 font-medium">REST APIs</span>, connecting frontend
+                            I have strong experience in <span className="text-purple-500 font-medium">API Integration </span>
+                            and working with <span className="text-purple-500 font-medium">REST APIs</span>, connecting frontend
                             with backend to create dynamic and real-time applications. I focus on clean UI,
                             smooth user experience, and performance optimization.
                         </p>

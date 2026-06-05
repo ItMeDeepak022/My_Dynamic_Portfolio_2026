@@ -11,5 +11,10 @@
      scroll-behavior: smooth;
  }
 
-  
-  
+
+
+ .swiper-pagination {
+  position: relative !important;
+  margin-top:20px;
+  padding: 10px;
+}

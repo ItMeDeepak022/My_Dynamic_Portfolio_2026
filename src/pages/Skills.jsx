@@ -18,7 +18,7 @@ export default function Skills() {
   }, [])
 
   return (
-    <section id="Skills" className="w-full sm:py-8 py-9 bg-white text-black">
+    <section id="Skills" className="w-full sm:py-8 py-9 bg-gray-100 text-black">
       <div className="max-w-6xl mx-auto px-4 py-5 text-center">
 
         {/* Heading */}

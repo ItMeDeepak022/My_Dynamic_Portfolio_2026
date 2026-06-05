@@ -64,12 +64,12 @@ export default function Header() {
             </header>
 
             {/* Mobile Menu */}
-            <div className={`absolute top-[60px] sm:hidden block
-                ${show ? 'left-[-100%]' : 'left-[2px]'}  
+            <div className={`absolute top-[59px] sm:hidden block
+                 ${show ? 'left-[-100%]' : 'left-[0px]'} 
                 transition-all duration-300
-                w-[60%] h-screen bg-white shadow`}>
+                w-full h-screen bg-white shadow`}>
 
-                <ul className="flex flex-col gap-3 p-4">
+                <ul className="flex flex-col gap-3  m-10">
                     <li >
                         <a
                             href={`#top`}

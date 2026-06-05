@@ -37,12 +37,19 @@ export default function Contact() {
         <>
             <Toaster position="top-right" />
 
-            <div id='Contact' className="min-h-screen bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+            <div id='Contact' className=" grid sm:grid-cols-[60%_auto] min-h-screen sm:gap-0 bg-white ">
 
-                <div className="max-w-[500px] mx-auto bg-white rounded-xl shadow-lg border border-cyan-500 p-8">
+                <div className='bg-white sm:block hidden h-155 '>
+                    <img
+                        src="https://media.istockphoto.com/id/1314928089/vector/usability-testing-abstract-concept-vector-illustration.jpg?s=612x612&w=0&k=20&c=r2nllU7Oqcs1jJr6uzWAGW7WhwOjzo_onKXi7P6B9Ks="
+                        alt=""
+                        className='h-full w-full object-contain'
+                    />
+                </div>
+                <div className=" bg-white sm:h-155 h-155 shadow-lg border sm:border-gray-200 rounded-[10px] border-cyan-500  p-8 sm:m-6 m-5 mt-20 sm:mt-20 ">
 
                     {/* Heading */}
-                    <h1 className="text-4xl font-bold text-black mb-8 text-center">
+                    <h1 className="sm:text-4xl text-3xl font-bold text-black mb-5 text-center">
                         Get in Touch
                     </h1>
 
@@ -118,12 +125,12 @@ export default function Contact() {
                             type="submit"
                             className="w-full flex justify-center items-center gap-5  bg-blue-600 hover:bg-blue-700 text-white 
                    font-bold py-3 px-4 rounded-lg 
-                   transition duration-300 shadow-md hover:shadow-lg"
+                   transition duration-300 shadow-md hover:shadow-lg "
                         >
                             Send Message
                             {
                                 loader && (
-                                    <div class="w-9 h-9 rounded-full animate-spin
+                                    <div class="w-8 h-8 rounded-full animate-spin
                     border-5 border-dotted  border-white border-t-transparent"></div>
                                 )
                             }

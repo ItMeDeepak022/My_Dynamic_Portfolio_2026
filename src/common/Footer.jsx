@@ -3,7 +3,7 @@ import React from 'react'
 export default function Footer() {
     return (
 
-        <footer className="mt-10 bg-white shadow-[0_0_3px_rgba(0,0,0,0.2)] text-white py-3 mt-2">
+        <footer className="sm:mt-5 mt-0  bg-white shadow-[0_0_3px_rgba(0,0,0,0.2)] text-white py-3 mt-2">
             <div className="max-w-full mx-auto  ">
                 <div className=" flex flex-col items-center justify-center space-y-2">
                     <div className='flex justify-center gap-2 sm:ml-0 p-2'>
