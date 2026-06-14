@@ -65,8 +65,8 @@ export default function Header() {
 
             {/* Mobile Menu */}
             <div className={`absolute top-[59px] sm:hidden block
-                 ${show ? 'left-[-100%]' : 'left-[0px]'} 
-                transition-all duration-300
+                 ${show ? 'translate-x-[-100%]' : 'translate-x-0'} 
+                transition-all duration-700
                 w-full h-screen bg-white shadow`}>
 
                 <ul className="flex flex-col gap-3  m-10">
