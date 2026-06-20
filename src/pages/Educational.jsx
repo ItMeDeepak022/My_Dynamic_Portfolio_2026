@@ -15,7 +15,7 @@ const educationData = [
         title: "B.Tech (Computer Science)",
         school: "RR Institute of Modern Technology , Lucknow UP",
         year: "2022 - 2026",
-        percentage: "Final Year",
+        percentage: " CGPA - 7.82",
     },
 ];
 
