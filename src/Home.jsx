@@ -14,6 +14,7 @@ import axios from 'axios'
 import Education from './pages/Educational'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
 
+
 export default function Home() {
 
   let [loading, setloading] = useState(false)
@@ -37,52 +38,39 @@ export default function Home() {
   const [text] = useTypewriter({
     words: ['loading...'],
     loop: true,
-    delaySpeed:1100,
+    delaySpeed: 1100,
   })
 
-  if (loading) {
-
-    return (
-      <div className="fixed inset-0 flex flex-col gap-10 items-center justify-center bg-black backdrop-blur-md z-50">
-
-        <div className="relative flex  items-center justify-center">
-
-          <div className="w-18 h-18 border-3  border-[white] border-t-transparent delay-1000 rounded-full animate-spin"></div>
-
-          
-        </div>
-        <div className='text-white font-bold text-4xl '>
-          {text} 
-          <Cursor />
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div>
-      <Header />
-      <ShowData />
-      <About />
-      <Education />
-      <Service />
-      <Skills />
-      <Internship />
-      <Projects />
-      <Certificates />
-      <Contact />
+    <>
+      {loading ? (
+        <div className="fixed inset-0 flex flex-col gap-10 items-center justify-center bg-black z-50">
 
-      <Footer />
+          <div className="relative flex items-center justify-center">
+            <div className="w-18 h-18 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+          </div>
 
-    </div>
+          <div className="text-white font-bold text-4xl">
+            {text}
+            <Cursor />
+          </div>
 
-
-
-
-
-
-
-
-
-  )
+        </div>
+      ) : (
+        <>
+          <Header />
+          <ShowData />
+          <About />
+          <Education />
+          <Service />
+          <Skills />
+          <Internship />
+          <Projects />
+          <Certificates />
+          <Contact />
+          <Footer />
+        </>
+      )}
+    </>
+  );
 }

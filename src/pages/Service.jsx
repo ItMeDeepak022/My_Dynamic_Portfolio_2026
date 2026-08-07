@@ -1,21 +1,48 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+
+const cardContainer = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.15 } }
+}
+
+const cardItem = {
+    hidden: { opacity: 0, y: 50, scale: 0.92 },
+    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: "easeOut" } }
+}
 
 export default function Service() {
     return (
-        <section  id='Service' className=" w-full sm:py-20 py-16  bg-white text-black">
+        <section id='Service' className=" w-full sm:py-20 py-16  bg-white text-black overflow-hidden">
             <div className="max-w-6xl mx-auto px-4 text-center">
 
                 {/* Heading */}
-                <h2 className="text-3xl sm:text-4xl font-bold mb-10">
+                <motion.h2
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="text-3xl sm:text-4xl font-bold mb-10"
+                >
                     My Services
-                </h2>
+                </motion.h2>
 
                 {/* Cards */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <motion.div
+                    variants={cardContainer}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
 
                     {/* Frontend */}
-                    <div className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl shadow-md  border border-cyan-400
-                  hover:shadow-md hover:-translate-y-2 transition duration-300 min-h-[200px]">
+                    <motion.div
+                        variants={cardItem}
+                        whileHover={{ y: -8 }}
+                        className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl shadow-md  border border-cyan-400
+                  hover:shadow-md transition-shadow duration-300 min-h-[200px]"
+                    >
 
                         <div className="absolute bottom-0 left-0 w-full h-0 bg-purple-600 
                     group-hover:h-full transition-all duration-500 z-0"></div>
@@ -30,11 +57,15 @@ export default function Service() {
                                 focusing on clean design, smooth user experience, and optimized performance across all devices.
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Backend */}
-                    <div className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl  border   border-cyan-400 shadow-md 
-                  hover:shadow-xl hover:-translate-y-2 transition duration-300 min-h-[200px]">
+                    <motion.div
+                        variants={cardItem}
+                        whileHover={{ y: -8 }}
+                        className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl  border   border-cyan-400 shadow-md 
+                  hover:shadow-xl transition-shadow duration-300 min-h-[200px]"
+                    >
 
                         <div className="absolute bottom-0 left-0 w-full h-0 bg-red-600 
                     group-hover:h-full transition-all duration-500 z-0"></div>
@@ -49,11 +80,15 @@ export default function Service() {
                                 like MongoDB, building REST APIs, and handling authentication with efficient server performance.
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* API Integration */}
-                    <div className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl  border border-cyan-400 shadow-md 
-                  hover:shadow-xl hover:-translate-y-2 transition duration-300 min-h-[200px]">
+                    <motion.div
+                        variants={cardItem}
+                        whileHover={{ y: -8 }}
+                        className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl  border border-cyan-400 shadow-md 
+                  hover:shadow-xl transition-shadow duration-300 min-h-[200px]"
+                    >
 
                         <div className="absolute bottom-0 left-0 w-full h-0 bg-green-600 
                     group-hover:h-full transition-all duration-500 z-0"></div>
@@ -68,11 +103,15 @@ export default function Service() {
                                 improving application functionality, and ensuring fast and reliable user experiences.
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* MERN Stack */}
-                    <div className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl border border-cyan-400 shadow-md 
-                  hover:shadow-xl hover:-translate-y-2 transition duration-300 min-h-[200px]">
+                    <motion.div
+                        variants={cardItem}
+                        whileHover={{ y: -8 }}
+                        className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl border border-cyan-400 shadow-md 
+                  hover:shadow-xl transition-shadow duration-300 min-h-[200px]"
+                    >
 
                         <div className="absolute bottom-0 left-0 w-full h-0 bg-indigo-600 
                     group-hover:h-full transition-all duration-500 z-0"></div>
@@ -87,9 +126,9 @@ export default function Service() {
                                 scalable solutions with seamless frontend-backend integration and efficient data handling.
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
 
-                </div>
+                </motion.div>
 
             </div>
         </section>

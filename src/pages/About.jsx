@@ -1,5 +1,16 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+
+const tagVariants = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.06 } }
+}
+
+const tagItem = {
+    hidden: { opacity: 0, scale: 0.6 },
+    show: { opacity: 1, scale: 1, transition: { duration: 0.35, ease: "backOut" } }
+}
 
 export default function About() {
     let [profileData, setprofileData] = useState([])
@@ -20,20 +31,34 @@ export default function About() {
     return (
 
         <>
-            <section id='About' className="  w-full py-9 sm:py-10 bg-white text-black">
-                <h2 className="text-center text-4xl font-bold sm:m-10 mt-9 mb-9 text-black">
+            <section id='About' className="  w-full py-9 sm:py-10 bg-white text-black overflow-hidden">
+                <motion.h2
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="text-center text-4xl font-bold sm:m-10 mt-9 mb-9 text-black"
+                >
                     About Me
-                </h2>
+                </motion.h2>
                 <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center sm:gap-15 gap-10">
 
                     {/* Left Side - Profile Image */}
-                    <div className="sm:max-w-[30%] max-w-[100%] flex justify-center">
+                    <motion.div
+                        initial={{ opacity: 0, x: -60 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        className="sm:max-w-[30%] max-w-[100%] flex justify-center"
+                    >
                         {
                             profileData.map((obj, index) => {
                                 return (
-                                    <div
+                                    <motion.div
                                         key={index}
-                                        className="relative sm:w-80 w-70 sm:h-80 h-70 rounded-full border-4 border-blue-500 hover:border-purple-500 transition-all duration-300 overflow-hidden bg-gray-100 flex items-start justify-center"
+                                        whileHover={{ scale: 1.05 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="relative sm:w-80 w-70 sm:h-80 h-70 rounded-full border-4 border-blue-500 hover:border-purple-500 transition-colors duration-300 overflow-hidden bg-gray-100 flex items-start justify-center"
                                     >
                                         <img
                                             src={obj.profileImg}
@@ -42,16 +67,22 @@ export default function About() {
                                         absolute top-[-15px] left-[-5px]  
                                         "
                                         />
-                                    </div>
+                                    </motion.div>
                                 )
                             })
                         }
-                    </div>
+                    </motion.div>
 
                     {/* Right Side - About Content */}
-                    <div className="md:w-full sm:text-justify p-2 text-lg text-justify">
+                    <motion.div
+                        initial={{ opacity: 0, x: 60 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+                        className="md:w-full sm:text-justify p-2 text-lg text-justify"
+                    >
 
-                      <p className="text-gray-800 sm:leading-relaxed mb-3 ">
+                        <p className="text-gray-800 sm:leading-relaxed mb-3 ">
                             Hi, I'm <span className="text-purple-500 font-semibold">Deepak Kushwaha</span>,
                             a passionate <span className="text-purple-500">Frontend Developer</span>,
                             <span className="text-purple-500"> MERN Stack Developer</span>, and
@@ -74,18 +105,35 @@ export default function About() {
                         </p>
 
                         {/* Skills / Keywords */}
-                        <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                            <span className="px-3 py-1 bg-blue-600 text-white rounded-full text-sm">Frontend Developer</span>
-                            <span className="px-3 py-1 bg-purple-600 text-white rounded-full text-sm">MERN Stack</span>
-                            <span className="px-3 py-1 bg-green-600 text-white rounded-full text-sm">React.js</span>
-                            <span className="px-3 py-1 bg-pink-600 text-white rounded-full text-sm">API Integration</span>
-                            <span className="px-3 py-1 bg-yellow-400 text-black rounded-full text-sm">JavaScript</span>
-                            <span className="px-3 py-1 bg-indigo-600 text-white rounded-full text-sm">Tailwind CSS</span>
-                            <span className="px-3 py-1 bg-red-500 text-white rounded-full text-sm">Node.js</span>
-                            <span className="px-3 py-1 bg-gray-800 text-white rounded-full text-sm">MongoDB</span>
-                        </div>
+                        <motion.div
+                            variants={tagVariants}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true, amount: 0.5 }}
+                            className="flex flex-wrap justify-center md:justify-start gap-3"
+                        >
+                            {[
+                                ["Frontend Developer", "bg-blue-600 text-white"],
+                                ["MERN Stack", "bg-purple-600 text-white"],
+                                ["React.js", "bg-green-600 text-white"],
+                                ["API Integration", "bg-pink-600 text-white"],
+                                ["JavaScript", "bg-yellow-400 text-black"],
+                                ["Tailwind CSS", "bg-indigo-600 text-white"],
+                                ["Node.js", "bg-red-500 text-white"],
+                                ["MongoDB", "bg-gray-800 text-white"],
+                            ].map(([label, cls]) => (
+                                <motion.span
+                                    key={label}
+                                    variants={tagItem}
+                                    whileHover={{ scale: 1.12, y: -3 }}
+                                    className={`px-3 py-1 ${cls} rounded-full text-sm`}
+                                >
+                                    {label}
+                                </motion.span>
+                            ))}
+                        </motion.div>
 
-                    </div>
+                    </motion.div>
 
                 </div>
 
@@ -96,5 +144,3 @@ export default function About() {
 
     )
 }
-
-

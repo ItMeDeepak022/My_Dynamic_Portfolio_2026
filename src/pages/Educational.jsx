@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+import { GraduationCap, CalendarDays, School } from "lucide-react";
 const educationData = [
     {
         title: "High School",
@@ -19,43 +21,99 @@ const educationData = [
     },
 ];
 
+
+
+
 export default function Education() {
     return (
-        <div className="py-12 bg-gray-50">
-            <h2 className="sm:text-4xl text-3xl  w-[70%] mx-auto sm:p-3 p-2 font-bold text-center mb-10 text-gray-800 border-b-2 border-t-2 border-slate-200">
+        <section className="py-20 bg-slate-50">
+
+            {/* Heading */}
+            <motion.h2
+                initial={{ opacity: 0, y: -40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-4xl md:text-5xl font-bold text-center text-slate-800 mb-16"
+            >
                 Education
-            </h2>
+            </motion.h2>
 
-            <div className="max-w-4xl sm:mx-auto mx-auto relative sm:border-l-4 border-blue-500 sm:pl-6 pl-5 ml-5">
-                {educationData.map((edu, index) => (
-                    <div key={index} className="mb-10 relative">
+            <div className="max-w-6xl mx-auto px-5">
 
-                        {/* Circle */}
-                        <div className="absolute sm:left-[-10px] left-[-5px]  sm:block hidden top-10 w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow-md"></div>
-                        <div className="absolute sm:left-[-24px] left-[-20px] sm:block hidden top-[26px] text-blue-500 text-4xl font-extrabold"> — </div>
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
 
-                        {/* Card */}
-                        <div className="sm:p-0 p-2 sm:mr-0 mr-10">
-                            <div className="p-4 border-2 border-[purple] rounded-[10px]  hover:border-[cyan] transition-all duration-300">
+                    {educationData.map((edu, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{
+                                opacity: 0,
+                                y: 80,
+                                scale: .9
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                                scale: 1
+                            }}
+                            viewport={{ once: true }}
+                            transition={{
+                                duration: .6,
+                                delay: index * .15,
+                                type: "spring",
+                                stiffness: 100
+                            }}
+                            whileHover={{
+                                y: -10,
+                                scale: 1.03
+                            }}
+                            className="group relative overflow-hidden rounded-3xl bg-white shadow-lg border border-slate-200 hover:border-cyan-400 transition-all duration-500"
+                        >
 
-                                <h3 className="text-xl font-semibold text-blue-600">
+                            {/* Background Gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-blue-500/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                            <div className="relative p-7">
+
+                                {/* Icon */}
+                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center text-white mb-6">
+                                    <GraduationCap size={28} />
+                                </div>
+
+                                {/* Degree */}
+                                <h2 className="text-2xl font-bold text-slate-800 mb-2">
                                     {edu.title}
-                                </h3>
+                                </h2>
 
-                                <p className="text-gray-700 font-semibold">{edu.school}</p>
+                                {/* School */}
+                                <div className="flex items-center gap-2 text-slate-600 mb-4">
+                                    <School size={18} />
+                                    <span>{edu.school}</span>
+                                </div>
 
-                                <div className="flex justify-between mt-2 text-sm text-gray-500">
-                                    <span>{edu.year}</span>
-                                    <span className=" text-green-600 font-bold text-[17px]">
+                                {/* Bottom */}
+                                <div className="flex justify-between items-center mt-8">
+
+                                    <div className="flex items-center gap-2 text-gray-500">
+                                        <CalendarDays size={18} />
+                                        {edu.year}
+                                    </div>
+
+                                    <div className="px-4 py-2 rounded-full bg-green-100 text-green-700 font-bold">
                                         {edu.percentage}
-                                    </span>
+                                    </div>
+
                                 </div>
 
                             </div>
-                        </div>
-                    </div>
-                ))}
+
+                        </motion.div>
+                    ))}
+
+                </div>
+
             </div>
-        </div>
+
+        </section>
     );
 }

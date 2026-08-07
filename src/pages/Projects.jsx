@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 // modules
 import { Autoplay, Pagination } from "swiper/modules";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 export default function Projects() {
 
@@ -28,65 +29,80 @@ export default function Projects() {
     }, []);
 
     return (
-        <section id='Projects' className="py-16 px-4 md:px-12 lg:px-20 bg-white text-black">
+        <section id='Projects' className="py-16 px-4 md:px-12 lg:px-20 bg-white text-black overflow-hidden">
 
             <div className="max-w-[1320px]  mx-auto">
 
-                <h2 className="text-4xl font-bold text-center mb-12">
-                    My Latest Projects
-                </h2>
-
-                <Swiper
-                    modules={[Autoplay, Pagination]}
-                    spaceBetween={20}
-                    loop={true}
-                    autoplay={{ delay: 2500 }}
-                    pagination={{ clickable: true }}
-
-                    breakpoints={{
-                        320: { slidesPerView: 1 },
-                        640: { slidesPerView: 1 },
-                        768: { slidesPerView: 2 },
-                        1024: { slidesPerView: 3 },
-                    }}
+                <motion.h2
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="text-4xl font-bold text-center mb-12"
                 >
+                    My Latest Projects
+                </motion.h2>
 
-                    {
-                        project.map((obj, index) => {
-                            let { projectTitle, aboutProject, projectLink, projectImg } = obj
-                           
-                            return (
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                >
+                    <Swiper
+                        modules={[Autoplay, Pagination]}
+                        spaceBetween={20}
+                        loop={true}
+                        autoplay={{ delay: 2500 }}
+                        pagination={{ clickable: true }}
 
-                                < SwiperSlide >
-                                    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 border border-purple-600 hover:-translate-y-2">
+                        breakpoints={{
+                            320: { slidesPerView: 1 },
+                            640: { slidesPerView: 1 },
+                            768: { slidesPerView: 2 },
+                            1024: { slidesPerView: 3 },
+                        }}
+                    >
 
-                                        <img src={projectImg} alt="Project 1" className="w-full h-65 object-fill" />
+                        {
+                            project.map((obj, index) => {
+                                let { projectTitle, aboutProject, projectLink, projectImg } = obj
 
-                                        <div className="sm:p-6 p-3 bg-gray-200 text-black ">
-                                            <h3 className="text-2xl font-bold mb-3"> {projectTitle} </h3>
-                                            <p className="text-gray-700 mb-4">
-                                                {aboutProject}
-                                            </p>
+                                return (
 
-                                            <a href={projectLink} className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition">
-                                                Live View
-                                            </a>
-                                        </div>
+                                    <SwiperSlide key={index}>
+                                        <motion.div
+                                            whileHover={{ scale: 1.03, y: -8 }}
+                                            transition={{ duration: 0.3, ease: "easeOut" }}
+                                            className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-purple-600"
+                                        >
 
-                                    </div>
-                                </SwiperSlide>
-                            )
-                        })
-                    }
+                                            <img src={projectImg} alt="Project 1" className="w-full h-65 object-fill" />
 
+                                            <div className="sm:p-6 p-3 bg-gray-200 text-black ">
+                                                <h3 className="text-2xl font-bold mb-3"> {projectTitle} </h3>
+                                                <p className="text-gray-700 mb-4">
+                                                    {aboutProject}
+                                                </p>
 
+                                                <motion.a
+                                                    whileHover={{ scale: 1.06 }}
+                                                    whileTap={{ scale: 0.95 }}
+                                                    href={projectLink}
+                                                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors"
+                                                >
+                                                    Live View
+                                                </motion.a>
+                                            </div>
 
+                                        </motion.div>
+                                    </SwiperSlide>
+                                )
+                            })
+                        }
 
-
-
-
-
-                </Swiper>
+                    </Swiper>
+                </motion.div>
 
             </div>
         </section >
