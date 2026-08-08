@@ -1,19 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-
-const gridVariants = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.07 } }
-}
-
-const cardVariants = {
-    hidden: { opacity: 0, scale: 0.6, y: 20 },
-    show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.45, ease: "backOut" } }
-}
+import useScrollDirection from '../hooks/useScrollDirection'
+import { fadeVariants, staggerContainer, popVariants, scrollViewport } from '../hooks/scrollVariants'
 
 export default function Skills() {
   let [Skills, setSkills] = useState([])
+  const direction = useScrollDirection()
+
   let getmySKills = () => {
 
     axios.get('https://my-portfolio-backend-2026.onrender.com/portfolio-API/skill-data')
@@ -34,10 +28,10 @@ export default function Skills() {
 
         {/* Heading */}
         <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          variants={fadeVariants(direction, 40)}
+          initial="hidden"
+          whileInView="show"
+          viewport={scrollViewport(0.6)}
           className="text-3xl sm:text-4xl font-bold mb-12"
         >
           My Skills
@@ -45,10 +39,10 @@ export default function Skills() {
 
         {/* Skills Grid */}
         <motion.div
-          variants={gridVariants}
+          variants={staggerContainer(0.07)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={scrollViewport(0.15)}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         >
 
@@ -57,7 +51,7 @@ export default function Skills() {
               return (
                 <motion.div
                   key={index}
-                  variants={cardVariants}
+                  variants={popVariants(direction, 20)}
                   whileHover={{ scale: 1.08, y: -6, boxShadow: "0 10px 25px rgba(147,51,234,0.25)" }}
                   className="py-8 bg-white rounded-xl shadow-md border-1 border-[purple] 
                       transition-shadow duration-300"

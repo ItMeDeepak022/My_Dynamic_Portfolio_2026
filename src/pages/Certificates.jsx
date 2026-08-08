@@ -9,9 +9,12 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import axios from "axios";
 import { motion } from "framer-motion";
+import useScrollDirection from "../hooks/useScrollDirection";
+import { fadeVariants, scrollViewport } from "../hooks/scrollVariants";
 
 export default function Certificates() {
     const [Certificate, setCertificate] = useState([]);
+    const direction = useScrollDirection();
 
     let myCertificate = () => {
         axios.get("https://my-portfolio-backend-2026.onrender.com/portfolio-API/certificate-data")
@@ -32,10 +35,10 @@ export default function Certificates() {
 
             {/* Heading */}
             <motion.h2
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                variants={fadeVariants(direction, 40)}
+                initial="hidden"
+                whileInView="show"
+                viewport={scrollViewport(0.6)}
                 className="text-3xl sm:text-4xl font-bold text-center text-black sm:mb-12 mb-5"
             >
                 My Certificates
@@ -43,10 +46,10 @@ export default function Certificates() {
 
             {/* Slider */}
             <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
+                variants={fadeVariants(direction, 60, 0.7)}
+                initial="hidden"
+                whileInView="show"
+                viewport={scrollViewport(0.15)}
                 className="sliders max-w-[800px] mx-auto px-3 py-5"
             >
 

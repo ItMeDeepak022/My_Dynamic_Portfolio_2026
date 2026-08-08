@@ -1,19 +1,13 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-
-const tagVariants = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.06 } }
-}
-
-const tagItem = {
-    hidden: { opacity: 0, scale: 0.6 },
-    show: { opacity: 1, scale: 1, transition: { duration: 0.35, ease: "backOut" } }
-}
+import useScrollDirection from '../hooks/useScrollDirection'
+import { fadeVariants, staggerContainer, popVariants, scrollViewport } from '../hooks/scrollVariants'
 
 export default function About() {
     let [profileData, setprofileData] = useState([])
+    const direction = useScrollDirection()
+
     let getmyProfile = () => {
 
         axios.get('https://my-portfolio-backend-2026.onrender.com/portfolio-API/profile-data')
@@ -33,10 +27,10 @@ export default function About() {
         <>
             <section id='About' className="  w-full py-9 sm:py-10 bg-white text-black overflow-hidden">
                 <motion.h2
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    variants={fadeVariants(direction, 40)}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={scrollViewport(0.6)}
                     className="text-center text-4xl font-bold sm:m-10 mt-9 mb-9 text-black"
                 >
                     About Me
@@ -45,9 +39,9 @@ export default function About() {
 
                     {/* Left Side - Profile Image */}
                     <motion.div
-                        initial={{ opacity: 0, x: -60 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x:0 }}
+                        viewport={scrollViewport(0.3)}
                         transition={{ duration: 0.7, ease: "easeOut" }}
                         className="sm:max-w-[30%] max-w-[100%] flex justify-center"
                     >
@@ -56,16 +50,14 @@ export default function About() {
                                 return (
                                     <motion.div
                                         key={index}
-                                        whileHover={{ scale: 1.05 }}
-                                        transition={{ duration: 0.3 }}
+                                    
                                         className="relative sm:w-80 w-70 sm:h-80 h-70 rounded-full border-4 border-blue-500 hover:border-purple-500 transition-colors duration-300 overflow-hidden bg-gray-100 flex items-start justify-center"
                                     >
                                         <img
                                             src={obj.profileImg}
                                             alt="Profile"
                                             className="w-full  object-contain object-top
-                                        absolute top-[-15px] left-[-5px]  
-                                        "
+                                        absolute top-[-15px] left-[-5px] "
                                         />
                                     </motion.div>
                                 )
@@ -75,10 +67,10 @@ export default function About() {
 
                     {/* Right Side - About Content */}
                     <motion.div
-                        initial={{ opacity: 0, x: 60 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+                        variants={fadeVariants(direction, 60, 0.7)}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={scrollViewport(0.3)}
                         className="md:w-full sm:text-justify p-2 text-lg text-justify"
                     >
 
@@ -106,10 +98,10 @@ export default function About() {
 
                         {/* Skills / Keywords */}
                         <motion.div
-                            variants={tagVariants}
+                            variants={staggerContainer(0.06)}
                             initial="hidden"
                             whileInView="show"
-                            viewport={{ once: true, amount: 0.5 }}
+                            viewport={scrollViewport(0.5)}
                             className="flex flex-wrap justify-center md:justify-start gap-3"
                         >
                             {[
@@ -124,7 +116,7 @@ export default function About() {
                             ].map(([label, cls]) => (
                                 <motion.span
                                     key={label}
-                                    variants={tagItem}
+                                    variants={popVariants(direction, 16)}
                                     whileHover={{ scale: 1.12, y: -3 }}
                                     className={`px-3 py-1 ${cls} rounded-full text-sm`}
                                 >

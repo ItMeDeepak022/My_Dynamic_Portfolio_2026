@@ -6,20 +6,11 @@ import { FaInstagram } from "react-icons/fa6";
 import { Link } from 'react-router';
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { motion } from 'framer-motion'
-
-const containerVariants = {
-    hidden: {},
-    show: {
-        transition: { staggerChildren: 0.18, delayChildren: 0.1 }
-    }
-}
-
-const itemUp = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-}
+import useScrollDirection from '../hooks/useScrollDirection'
+import { staggerContainer, fadeVariants, scrollViewport } from '../hooks/scrollVariants'
 
 export default function ShowData() {
+    const direction = useScrollDirection()
 
     const [text] = useTypewriter({
         words: ["Frontend Developer...", "Web Developer...", "MERN Stack Developer..."],
@@ -31,21 +22,17 @@ export default function ShowData() {
     let [resumeData, setresumeData] = useState([])
 
     let getmyProfile = () => {
-
         axios.get('https://my-portfolio-backend-2026.onrender.com/portfolio-API/profile-data')
             .then((res) => res.data)
             .then((finalRes) => {
-                // console.log(finalRes);
                 setprofileData(finalRes.data)
             })
     }
 
     let getmyResume = () => {
-
         axios.get('https://my-portfolio-backend-2026.onrender.com/portfolio-API/resume-data')
             .then((res) => res.data)
             .then((finalRes) => {
-                // console.log(finalRes);
                 setresumeData(finalRes.data)
             })
     }
@@ -56,32 +43,31 @@ export default function ShowData() {
     }, [])
 
     return (
-
         <>
             <div className="w-full relative mt-2 sm:py-15 py-5 mx-auto flex sm:flex-row flex-col-reverse sm:gap-0 gap-10 justify-around items-center h-auto bg-gray-100 sm:px-8 overflow-hidden">
 
                 {/* Left Part */}
                 <motion.div
-                    variants={containerVariants}
+                    variants={staggerContainer(0.18, 0.1)}
                     initial="hidden"
-                    animate="show"
+                    whileInView="show"
+                    viewport={scrollViewport(0.3)}
                     className="sm:max-w-[70%] max-w-[100%] text-black sm:text-start text-center"
                 >
-                    <motion.h1 variants={itemUp} className="sm:text-5xl text-4xl font-bold sm:mb-4 sm:mt-0 mt-3 mb-0">
+                    <motion.h1 variants={fadeVariants(direction, 30)} className="sm:text-5xl text-4xl font-bold sm:mb-4 sm:mt-0 mt-3 mb-0">
                         Hi, I'm <span className="text-blue-500">Deepak Kushwaha</span>
                     </motion.h1>
 
-                    <motion.div variants={itemUp} className="sm:text-3xl text-2xl sm:font-semibold font-bold sm:p-[15px_0px] sm:p-0 p-2">
+                    <motion.div variants={fadeVariants(direction, 30)} className="sm:text-3xl text-2xl sm:font-semibold font-bold sm:p-[15px_0px] sm:p-0 p-2">
                         <span className="text-purple-500 font-bold sm:text-[40px] text-[25px]">
                             {text}
                             <Cursor />
                         </span>
                     </motion.div>
-                    <motion.p variants={itemUp} className="w-full text-gray-700 mt-1 ">
+                    <motion.p variants={fadeVariants(direction, 30)} className="w-full text-gray-700 mt-1 ">
                         Passionate about creating beautiful & full responsive & functional web experiences.
                     </motion.p>
-                    <motion.div variants={itemUp} className='BTNs w-[80%] sm:w-[50%] mx-auto  mt-4 flex justify-center sm:gap-10 gap-5 items-center py-3'>
-                        {/* GitHub */}
+                    <motion.div variants={fadeVariants(direction, 30)} className='BTNs w-[80%] sm:w-[50%] mx-auto  mt-4 flex justify-center sm:gap-10 gap-5 items-center py-3'>
                         <motion.div
                             whileHover={{ scale: 1.15, rotate: -8 }}
                             whileTap={{ scale: 0.9 }}
@@ -90,7 +76,6 @@ export default function ShowData() {
                             <a href={'https://github.com/ItMeDeepak022'}><FaGithub className='text-[32px]' /></a>
                         </motion.div>
 
-                        {/* LinkedIn */}
                         <motion.div
                             whileHover={{ scale: 1.15, rotate: 8 }}
                             whileTap={{ scale: 0.9 }}
@@ -99,7 +84,6 @@ export default function ShowData() {
                             <a href="https://www.linkedin.com/in/deepakkushwaha022/"><FaLinkedinIn className='text-[32px]' /></a>
                         </motion.div>
 
-                        {/* Instagram */}
                         <motion.div
                             whileHover={{ scale: 1.15, rotate: -8 }}
                             whileTap={{ scale: 0.9 }}
@@ -109,13 +93,12 @@ export default function ShowData() {
                         </motion.div>
                     </motion.div>
 
-
                     {
                         resumeData.map((obj, index) => {
                             return (
                                 <motion.div
                                     key={index}
-                                    variants={itemUp}
+                                    variants={fadeVariants(direction, 30)}
                                     className='flex justify-center items-center gap-3 text-white font-bold sm:mt-5 mt-5 group-hover:active:select-all'
                                 >
                                     <motion.button
@@ -139,21 +122,19 @@ export default function ShowData() {
 
                 {/* Right Part */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.7, rotate: -8 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={scrollViewport(0.3)}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
                     className="sm:max-w-[30%] max-w-[100%] flex justify-center"
                 >
                     {
                         profileData.map((obj, index) => {
-
                             return (
-
                                 <motion.div
                                     key={index}
                                     animate={{ y: [0, -14, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    // whileHover={{ scale: 1.04 }}
                                     className="relative sm:w-80 w-70 sm:h-80 h-70 rounded-full border-4 border-blue-500 hover:border-purple-500 transition-colors duration-300 overflow-hidden bg-gray-100 flex items-start justify-center"
                                 >
                                     <img
@@ -169,12 +150,7 @@ export default function ShowData() {
                     }
                 </motion.div>
 
-
             </div>
         </>
-
-
-
-
     )
 }

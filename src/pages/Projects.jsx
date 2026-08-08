@@ -9,10 +9,13 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import axios from "axios";
 import { motion } from "framer-motion";
+import useScrollDirection from "../hooks/useScrollDirection";
+import { fadeVariants, scrollViewport } from "../hooks/scrollVariants";
 
 export default function Projects() {
 
     const [project, setproject] = useState([]);
+    const direction = useScrollDirection();
 
     let myproject = () => {
         axios.get("https://my-portfolio-backend-2026.onrender.com/portfolio-API/project-data")
@@ -34,20 +37,20 @@ export default function Projects() {
             <div className="max-w-[1320px]  mx-auto">
 
                 <motion.h2
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    variants={fadeVariants(direction, 40)}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={scrollViewport(0.6)}
                     className="text-4xl font-bold text-center mb-12"
                 >
                     My Latest Projects
                 </motion.h2>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.15 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    variants={fadeVariants(direction, 60, 0.7)}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={scrollViewport(0.15)}
                 >
                     <Swiper
                         modules={[Autoplay, Pagination]}

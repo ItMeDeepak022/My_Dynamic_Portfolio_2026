@@ -1,27 +1,21 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-
-const cardContainer = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.15 } }
-}
-
-const cardItem = {
-    hidden: { opacity: 0, y: 50, scale: 0.92 },
-    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: "easeOut" } }
-}
+import useScrollDirection from '../hooks/useScrollDirection'
+import { scaleVariants, staggerContainer, fadeVariants, scrollViewport } from '../hooks/scrollVariants'
 
 export default function Service() {
+    const direction = useScrollDirection()
+
     return (
         <section id='Service' className=" w-full sm:py-20 py-16  bg-white text-black overflow-hidden">
             <div className="max-w-6xl mx-auto px-4 text-center">
 
                 {/* Heading */}
                 <motion.h2
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    variants={fadeVariants(direction, 40)}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={scrollViewport(0.6)}
                     className="text-3xl sm:text-4xl font-bold mb-10"
                 >
                     My Services
@@ -29,16 +23,16 @@ export default function Service() {
 
                 {/* Cards */}
                 <motion.div
-                    variants={cardContainer}
+                    variants={staggerContainer(0.15)}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, amount: 0.2 }}
+                    viewport={scrollViewport(0.2)}
                     className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
 
                     {/* Frontend */}
                     <motion.div
-                        variants={cardItem}
+                        variants={scaleVariants(direction, 50)}
                         whileHover={{ y: -8 }}
                         className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl shadow-md  border border-cyan-400
                   hover:shadow-md transition-shadow duration-300 min-h-[200px]"
@@ -61,7 +55,7 @@ export default function Service() {
 
                     {/* Backend */}
                     <motion.div
-                        variants={cardItem}
+                        variants={scaleVariants(direction, 50)}
                         whileHover={{ y: -8 }}
                         className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl  border   border-cyan-400 shadow-md 
                   hover:shadow-xl transition-shadow duration-300 min-h-[200px]"
@@ -84,7 +78,7 @@ export default function Service() {
 
                     {/* API Integration */}
                     <motion.div
-                        variants={cardItem}
+                        variants={scaleVariants(direction, 50)}
                         whileHover={{ y: -8 }}
                         className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl  border border-cyan-400 shadow-md 
                   hover:shadow-xl transition-shadow duration-300 min-h-[200px]"
@@ -107,7 +101,7 @@ export default function Service() {
 
                     {/* MERN Stack */}
                     <motion.div
-                        variants={cardItem}
+                        variants={scaleVariants(direction, 50)}
                         whileHover={{ y: -8 }}
                         className="group relative overflow-hidden sm:p-6 p-3 rounded-2xl border border-cyan-400 shadow-md 
                   hover:shadow-xl transition-shadow duration-300 min-h-[200px]"

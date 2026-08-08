@@ -7,9 +7,12 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import axios from "axios";
 import { motion } from "framer-motion";
+import useScrollDirection from "../hooks/useScrollDirection";
+import { fadeVariants, scrollViewport } from "../hooks/scrollVariants";
 
 export default function Internship() {
     const [intern, setIntern] = useState([]);
+    const direction = useScrollDirection();
 
     const getmyIntern = async () => {
         try {
@@ -31,20 +34,20 @@ export default function Internship() {
 
             {/* Heading */}
             <motion.h2
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                variants={fadeVariants(direction, 40)}
+                initial="hidden"
+                whileInView="show"
+                viewport={scrollViewport(0.6)}
                 className="text-3xl sm:text-4xl font-bold text-center text-black mb-8"
             >
                 My Internships
             </motion.h2>
 
             <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
+                variants={fadeVariants(direction, 60, 0.7)}
+                initial="hidden"
+                whileInView="show"
+                viewport={scrollViewport(0.2)}
                 className="max-w-[500px] mx-auto px-4"
             >
 

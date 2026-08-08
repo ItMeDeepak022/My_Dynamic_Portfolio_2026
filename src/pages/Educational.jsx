@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion'
 import { GraduationCap, CalendarDays, School } from "lucide-react";
+import useScrollDirection from '../hooks/useScrollDirection'
+import { fadeVariants, scrollViewport } from '../hooks/scrollVariants'
+
 const educationData = [
     {
         title: "High School",
@@ -25,15 +28,17 @@ const educationData = [
 
 
 export default function Education() {
+    const direction = useScrollDirection()
+
     return (
-        <section className="py-20 bg-slate-50">
+        <section className="py-20 bg-slate-50 overflow-hidden">
 
             {/* Heading */}
             <motion.h2
-                initial={{ opacity: 0, y: -40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                variants={fadeVariants(direction, 40)}
+                initial="hidden"
+                whileInView="show"
+                viewport={scrollViewport(0.6)}
                 className="text-4xl md:text-5xl font-bold text-center text-slate-800 mb-16"
             >
                 Education
@@ -46,22 +51,26 @@ export default function Education() {
                     {educationData.map((edu, index) => (
                         <motion.div
                             key={index}
-                            initial={{
-                                opacity: 0,
-                                y: 80,
-                                scale: .9
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                                scale: 1
-                            }}
-                            viewport={{ once: true }}
-                            transition={{
-                                duration: .6,
-                                delay: index * .15,
-                                type: "spring",
-                                stiffness: 100
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={scrollViewport(0.25)}
+                            variants={{
+                                hidden: {
+                                    opacity: 0,
+                                    y: direction === 'down' ? 80 : -80,
+                                    scale: 0.9
+                                },
+                                show: {
+                                    opacity: 1,
+                                    y: 0,
+                                    scale: 1,
+                                    transition: {
+                                        duration: 0.6,
+                                        delay: index * 0.15,
+                                        type: "spring",
+                                        stiffness: 100
+                                    }
+                                }
                             }}
                             whileHover={{
                                 y: -10,
