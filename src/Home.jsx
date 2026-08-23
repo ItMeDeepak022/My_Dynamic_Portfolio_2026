@@ -31,6 +31,7 @@ export default function Home() {
       })
   }
 
+  // automatic api call after 12 mintues
   useEffect(() => {
     getmyProfile()
   }, [])
@@ -40,6 +41,18 @@ export default function Home() {
     loop: true,
     delaySpeed: 1100,
   })
+
+  useEffect(() => {
+    const ping = () => {
+      axios.get("https://my-portfolio-backend-2026.onrender.com");
+    };
+
+    ping();
+
+    const timer = setInterval(ping, 12 * 60 * 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
