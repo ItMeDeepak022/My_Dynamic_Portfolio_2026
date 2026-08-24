@@ -31,14 +31,16 @@ export default function Home() {
       })
   }
 
-  
+
   const [text] = useTypewriter({
     words: ['loading...'],
     loop: true,
     delaySpeed: 1100,
   })
 
-  
+  useEffect(() => {
+    getmyProfile();
+  }, [])
 
   return (
     <>
