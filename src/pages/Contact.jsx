@@ -89,7 +89,7 @@ export default function Contact() {
                                 type="text"
                                 name='name'
                                 placeholder="Your Name"
-                                className="w-full px-4 py-2 border border-cyan-400 rounded-lg 
+                                className="w-full px-4 py-2 border border-gray-200 rounded-lg 
                      focus:ring-2 focus:ring-cyan-500 focus:border-transparent 
                      outline-none bg-white text-black transition-shadow duration-300"
                                 required
@@ -105,7 +105,7 @@ export default function Contact() {
                                 type="email"
                                 name='email'
                                 placeholder="your@email.com"
-                                className="w-full px-4 py-2 border border-cyan-400 rounded-lg 
+                                className="w-full px-4 py-2 border border-gray-200 rounded-lg 
                      focus:ring-2 focus:ring-cyan-500 focus:border-transparent 
                      outline-none bg-white text-black transition-shadow duration-300"
                                 required
@@ -121,7 +121,7 @@ export default function Contact() {
                                 type="tel"
                                 name='mobileNo'
                                 placeholder="+91 9876543210"
-                                className="w-full px-4 py-2 border border-cyan-400 rounded-lg 
+                                className="w-full px-4 py-2 border border-gray-200 rounded-lg 
                      focus:ring-2 focus:ring-cyan-500 focus:border-transparent 
                      outline-none bg-white text-black transition-shadow duration-300"
                                 required
@@ -137,7 +137,7 @@ export default function Contact() {
                                 placeholder="Your message..."
                                 rows="5"
                                 name='message'
-                                className="w-full px-4 py-2 border border-cyan-400 rounded-lg 
+                                className="w-full px-4 py-2 border border-gray-200 rounded-lg 
                      focus:ring-2 focus:ring-cyan-500 focus:border-transparent 
                      outline-none resize-none bg-white text-black transition-shadow duration-300"
                                 required

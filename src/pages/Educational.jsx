@@ -85,7 +85,7 @@ export default function Education() {
                             <div className="relative p-7">
 
                                 {/* Icon */}
-                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center text-white mb-6">
+                                <div className="w-14 h-14 rounded-2xl bg-slate-200 flex items-center justify-center text-blue-700 mb-6">
                                     <GraduationCap size={28} />
                                 </div>
 
