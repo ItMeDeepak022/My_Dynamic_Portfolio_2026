@@ -1,14 +1,19 @@
-import axios from 'axios'
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import useScrollDirection from '../hooks/useScrollDirection'
 import { fadeVariants, staggerContainer, scrollViewport } from '../hooks/scrollVariants'
+import axios from 'axios'
 
 export default function Contact() {
 
     let [loader, setloader] = useState(false)
     const direction = useScrollDirection()
+
+
+   
+  
+    
 
     let getTouch = (e) => {
 
@@ -22,15 +27,17 @@ export default function Contact() {
             "message": e.target.message.value
         }
 
-        axios.post(`https://portfolio-backend-deploy-nu.vercel.app/api/Info`, obj)
+        axios.post(`${import.meta.env.VITE_API_ContactUrl}/Info`, obj)   
             .then((res) => res.data)
             .then((finalRes) => {
+
+                console.log(finalRes)
                 if (finalRes.status) {
                     setloader(false)
                     toast.success(finalRes.message)
                     e.target.reset()
                 }
-
+ 
             })
     }
 
@@ -41,32 +48,33 @@ export default function Contact() {
         <>
             <Toaster position="top-right" />
 
-            <div id='Contact' className=" grid sm:grid-cols-[60%_auto] min-h-screen sm:gap-0 bg-white overflow-hidden">
+            <div id='Contact' className="w-full py-12 md:py-16 bg-white overflow-hidden">
+                <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-                <motion.div
-                    variants={fadeVariants(direction, 60, 0.7)}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={scrollViewport(0.3)}
-                    className='bg-white sm:block hidden h-155 '
-                >
-                    <img
-                        src="https://media.istockphoto.com/id/1314928089/vector/usability-testing-abstract-concept-vector-illustration.jpg?s=612x612&w=0&k=20&c=r2nllU7Oqcs1jJr6uzWAGW7WhwOjzo_onKXi7P6B9Ks="
-                        alt=""
-                        className='h-full w-full object-contain'
-                    />
-                </motion.div>
+                    <motion.div
+                        variants={fadeVariants(direction, 60, 0.7)}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={scrollViewport(0.3)}
+                        className='bg-white hidden md:flex items-center justify-center p-4'
+                    >
+                        <img
+                            src="https://media.istockphoto.com/id/1314928089/vector/usability-testing-abstract-concept-vector-illustration.jpg?s=612x612&w=0&k=20&c=r2nllU7Oqcs1jJr6uzWAGW7WhwOjzo_onKXi7P6B9Ks="
+                            alt=""
+                            className='max-h-[460px] w-full object-contain'
+                        />
+                    </motion.div>
 
-                <motion.div
-                    variants={fadeVariants(direction, 60, 0.7)}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={scrollViewport(0.3)}
-                    className=" bg-white sm:h-155 h-155 shadow-lg border sm:border-gray-200 rounded-[10px] border-cyan-500  p-8 sm:m-6 m-5 mt-20 sm:mt-20 "
-                >
+                    <motion.div
+                        variants={fadeVariants(direction, 60, 0.7)}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={scrollViewport(0.3)}
+                        className="bg-white shadow-xl border border-gray-200 rounded-2xl p-6 sm:p-8 w-full max-w-lg mx-auto"
+                    >
 
-                    {/* Heading */}
-                    <h1 className="sm:text-4xl text-3xl font-bold text-black mb-5 text-center">
+                        {/* Heading */}
+                        <h1 className="sm:text-4xl text-3xl text-black mb-5 text-center">
                         Get in Touch
                     </h1>
 
@@ -151,7 +159,7 @@ export default function Contact() {
                             whileTap={{ scale: 0.97 }}
                             type="submit"
                             className="w-full flex justify-center items-center gap-5  bg-blue-600 hover:bg-blue-700 text-white 
-                   font-bold py-3 px-4 rounded-lg 
+                   py-3 px-4 rounded-lg 
                    transition-colors duration-300 shadow-md "
                         >
                             Send Message
@@ -167,6 +175,7 @@ export default function Contact() {
                     </motion.form>
                 </motion.div>
 
+                </div>
             </div>
 
         </>

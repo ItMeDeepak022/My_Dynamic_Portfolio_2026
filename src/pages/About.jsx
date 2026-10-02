@@ -1,4 +1,4 @@
-import axios from 'axios'
+import apiClient from '../services/apiClient'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import useScrollDirection from '../hooks/useScrollDirection'
@@ -10,7 +10,7 @@ export default function About() {
 
     let getmyProfile = () => {
 
-        axios.get('https://my-portfolio-backend-2026.onrender.com/portfolio-API/profile-data')
+        apiClient.get('/profile-data')
             .then((res) => res.data)
             .then((finalRes) => {
                 // console.log(finalRes);
@@ -25,17 +25,17 @@ export default function About() {
     return (
 
         <>
-            <section id='About' className="  w-full py-9 sm:py-10 bg-white text-black overflow-hidden">
+            <section id='About' className="w-full py-9 sm:py-12 bg-white text-black overflow-hidden">
                 <motion.h2
                     variants={fadeVariants(direction, 40)}
                     initial="hidden"
                     whileInView="show"
                     viewport={scrollViewport(0.6)}
-                    className="text-center text-4xl font-bold sm:m-10 mt-9 mb-9 text-black"
+                    className="text-center text-4xl sm:m-10 mt-9 mb-9 text-black"
                 >
                     About Me
                 </motion.h2>
-                <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center sm:gap-15 gap-10">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center gap-8 md:gap-12">
 
                     {/* Left Side - Profile Image */}
                     <motion.div
@@ -43,22 +43,19 @@ export default function About() {
                         whileInView={{ opacity: 1, x:0 }}
                         viewport={scrollViewport(0.3)}
                         transition={{ duration: 0.7, ease: "easeOut" }}
-                        className="sm:max-w-[30%] max-w-[100%] flex justify-center"
+                        className="w-full md:w-auto flex justify-center shrink-0"
                     >
                         {
                             profileData.map((obj, index) => {
                                 return (
                                     <motion.div
                                         key={index}
-                                    
-                                        className="relative sm:w-80 w-70 sm:h-80 h-70 rounded-full border-4 border-blue-500 hover:border-purple-500 transition-colors duration-300 overflow-hidden bg-gray-100 flex items-start justify-center"
+                                        className="relative w-60 h-60 sm:w-68 sm:h-68 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full border-4 border-blue-500 hover:border-purple-500 transition-colors duration-300 overflow-hidden bg-gray-100 flex items-start justify-center"
                                     >
                                         <img
                                             src={obj.profileImg}
                                             alt="Profile"
-                                            className="w-full  object-contain object-top
-                                        absolute top-[-33px] left-[0px] "
-                                         
+                                            className="w-full object-contain object-top absolute top-[-33px] left-[0px]"
                                         />
                                     </motion.div>
                                 )
@@ -72,7 +69,7 @@ export default function About() {
                         initial="hidden"
                         whileInView="show"
                         viewport={scrollViewport(0.3)}
-                        className="md:w-full sm:text-justify p-2 text-lg text-justify"
+                        className="w-full md:flex-1 p-2 text-base md:text-lg text-justify"
                     >
 
                         <p className="text-gray-800 sm:leading-relaxed mb-3 ">

@@ -39,7 +39,7 @@ export default function Education() {
                 initial="hidden"
                 whileInView="show"
                 viewport={scrollViewport(0.6)}
-                className="text-4xl md:text-5xl font-bold text-center text-slate-800 mb-16"
+                className="text-4xl md:text-5xl text-center text-slate-800 mb-16"
             >
                 Education
             </motion.h2>
@@ -90,7 +90,7 @@ export default function Education() {
                                 </div>
 
                                 {/* Degree */}
-                                <h2 className="text-2xl font-bold text-slate-800 mb-2">
+                                <h2 className="text-2xl text-slate-800 mb-2">
                                     {edu.title}
                                 </h2>
 
@@ -108,7 +108,7 @@ export default function Education() {
                                         {edu.year}
                                     </div>
 
-                                    <div className="px-4 py-2 rounded-full bg-green-100 text-green-700 font-bold">
+                                    <div className="px-4 py-2 rounded-full bg-green-100 text-green-700">
                                         {edu.percentage}
                                     </div>
 

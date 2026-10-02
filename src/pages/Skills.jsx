@@ -1,4 +1,4 @@
-import axios from 'axios';
+import apiClient from '../services/apiClient';
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import useScrollDirection from '../hooks/useScrollDirection'
@@ -10,7 +10,7 @@ export default function Skills() {
 
   let getmySKills = () => {
 
-    axios.get('https://my-portfolio-backend-2026.onrender.com/portfolio-API/skill-data')
+    apiClient.get('/skill-data')
       .then((res) => res.data)
       .then((finalRes) => {
         // console.log(finalRes);
@@ -32,7 +32,7 @@ export default function Skills() {
           initial="hidden"
           whileInView="show"
           viewport={scrollViewport(0.6)}
-          className="text-3xl sm:text-4xl font-bold mb-12"
+          className="text-3xl sm:text-4xl mb-12"
         >
           My Skills
         </motion.h2>

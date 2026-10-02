@@ -1,27 +1,74 @@
- @import "tailwindcss";
+@import "tailwindcss";
 
- .swiper-pagination {
-     bottom: 0px !important;
-     text-align: center;
- }
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+}
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+  overflow-x: clip;
+  max-width: 100vw;
+}
 
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  max-width: 100vw;
+  width: 100%;
+}
 
- html {
-     scroll-behavior: smooth;
- }
+/* Custom Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 0px;
+}
 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
 
- .swiper-pagination {
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.swiper-pagination {
   position: relative !important;
-  margin-top:20px;
-  padding: 10px;
+  margin-top: 16px;
+  padding: 8px 0;
+}
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: #94a3b8 !important;
+  opacity: 0.45 !important;
+  transition: all 0.3s ease !important;
+  border-radius: 9999px !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 22px !important;
+  background: #3b82f6 !important;
+  opacity: 1 !important;
 }
 
 /* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

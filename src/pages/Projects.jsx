@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 
 // modules
 import { Autoplay, Pagination } from "swiper/modules";
-import axios from "axios";
+import apiClient from "../services/apiClient";
 import { motion } from "framer-motion";
 import useScrollDirection from "../hooks/useScrollDirection";
 import { fadeVariants, scrollViewport } from "../hooks/scrollVariants";
@@ -18,7 +18,7 @@ export default function Projects() {
     const direction = useScrollDirection();
 
     let myproject = () => {
-        axios.get("https://my-portfolio-backend-2026.onrender.com/portfolio-API/project-data")
+        apiClient.get("/project-data")
             .then((res) => res.data).then((finalRes) => {
                 // console.log(finalRes);
                 setproject(finalRes.data)
@@ -41,7 +41,7 @@ export default function Projects() {
                     initial="hidden"
                     whileInView="show"
                     viewport={scrollViewport(0.6)}
-                    className="text-4xl font-bold text-center mb-12"
+                    className="text-4xl text-center mb-12"
                 >
                     My Latest Projects
                 </motion.h2>
@@ -77,13 +77,13 @@ export default function Projects() {
                                         <motion.div
                                             whileHover={{ scale: 1.03, y: -8 }}
                                             transition={{ duration: 0.3, ease: "easeOut" }}
-                                            className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-purple-600"
+                                            className="bg-gray-800 rounded-lg overflow-hidden shadow-lg   border border-purple-600"
                                         >
 
                                             <img src={projectImg} alt="Project 1" className="w-full h-65 object-fill" />
 
                                             <div className="sm:p-6 p-3 bg-gray-200 text-black ">
-                                                <h3 className="text-2xl font-bold mb-3"> {projectTitle} </h3>
+                                                <h3 className="text-2xl mb-3"> {projectTitle} </h3>
                                                 <p className="text-gray-700 mb-4">
                                                     {aboutProject}
                                                 </p>
@@ -92,7 +92,7 @@ export default function Projects() {
                                                     whileHover={{ scale: 1.06 }}
                                                     whileTap={{ scale: 0.95 }}
                                                     href={projectLink}
-                                                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors"
+                                                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded transition-colors"
                                                 >
                                                     Live View
                                                 </motion.a>
