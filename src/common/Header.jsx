@@ -39,7 +39,7 @@ export default function Header() {
     return (
         <>
             {/* Fixed Header Bar */}
-            <div className="fixed top-0 left-0 right-0 z-40 w-full backdrop-blur-md bg-white/70 border-b border-gray-200/40 shadow-xs transition-all duration-300">
+            <div className="fixed top-0 left-0 right-0 z-40 w-full  transition-all duration-300">
                 <motion.header
                     initial={{ y: -80, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -50,7 +50,7 @@ export default function Header() {
                         <div className="flex justify-between items-center">
 
                             <motion.div
-                                whileHover={{ scale: 1.05 }}
+                                // whileHover={{ scale: 1.05 }}
                                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
                                 className="text-xl sm:text-2xl text-blue-500 font-semibold cursor-pointer"
                             >
@@ -110,7 +110,7 @@ export default function Header() {
             </div>
 
             {/* Spacer to prevent page content from jumping under fixed header */}
-            <div className="h-[74px] sm:h-[80px] w-full shrink-0" aria-hidden="true" />
+            <div className="h-[74px] sm:h-[70px] w-full shrink-0" aria-hidden="true" />
 
             {/* Mobile & Tablet Backdrop Overlay */}
             <div

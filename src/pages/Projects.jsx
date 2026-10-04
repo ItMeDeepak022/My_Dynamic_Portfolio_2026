@@ -61,7 +61,7 @@ export default function Projects() {
 
                         breakpoints={{
                             320: { slidesPerView: 1 },
-                            640: { slidesPerView: 1 },
+                            // 640: { slidesPerView: 1 },
                             768: { slidesPerView: 2 },
                             1024: { slidesPerView: 3 },
                         }}
@@ -77,14 +77,14 @@ export default function Projects() {
                                         <motion.div
                                             whileHover={{ scale: 1.03, y: -8 }}
                                             transition={{ duration: 0.3, ease: "easeOut" }}
-                                            className="bg-gray-800 rounded-lg overflow-hidden shadow-lg   border border-purple-600"
-                                        >
+                                            className=" rounded-lg overflow-hidden shadow-lg   border border-purple-600"
+                                        > 
 
                                             <img src={projectImg} alt="Project 1" className="w-full h-65 object-fill" />
 
-                                            <div className="sm:p-6 p-3 bg-gray-200 text-black ">
-                                                <h3 className="text-2xl mb-3"> {projectTitle} </h3>
-                                                <p className="text-gray-700 mb-4">
+                                            <div className="sm:p-6 p-3 bg-slate-100   border-t-1 border-t-gray-300">
+                                                <h3 className="text-[20px] text-[#1447E6] mb-3"> {projectTitle} </h3>
+                                                <p className="text-gray-500 text-[14px] mb-4">
                                                     {aboutProject}
                                                 </p>
 
@@ -92,7 +92,7 @@ export default function Projects() {
                                                     whileHover={{ scale: 1.06 }}
                                                     whileTap={{ scale: 0.95 }}
                                                     href={projectLink}
-                                                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded transition-colors"
+                                                    className="inline-block text-[14px] bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded transition-colors"
                                                 >
                                                     Live View
                                                 </motion.a>

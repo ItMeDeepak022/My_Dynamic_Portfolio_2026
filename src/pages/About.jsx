@@ -55,7 +55,7 @@ export default function About() {
                                         <img
                                             src={obj.profileImg}
                                             alt="Profile"
-                                            className="w-full object-contain object-top absolute top-[-33px] left-[0px]"
+                                            className="w-full object-contain object-top absolute md:top-[-33px] top-[-25px]  left-[0px]"
                                         />
                                     </motion.div>
                                 )

@@ -90,7 +90,7 @@ export default function Education() {
                                 </div>
 
                                 {/* Degree */}
-                                <h2 className="text-2xl text-slate-800 mb-2">
+                                <h2 className="text-[20px] text-[#1447E6] mb-2">
                                     {edu.title}
                                 </h2>
 

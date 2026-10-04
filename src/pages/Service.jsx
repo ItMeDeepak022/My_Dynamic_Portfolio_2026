@@ -81,7 +81,7 @@ export default function Service() {
                     initial="hidden"
                     whileInView="show"
                     viewport={scrollViewport(0.15)}
-                    className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-8"
+                    className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-5"
                 >
                     {services.map((item, index) => {
                          
@@ -91,7 +91,7 @@ export default function Service() {
                                 variants={scaleVariants(direction, 40)}
                                 whileHover={{ y: -6 }}
                                 transition={{ duration: 0.25, ease: "easeOut" }}
-                                className={`group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 ${item.accentGlow} shadow-sm transition-all duration-300`}
+                                className={`group relative flex flex-col justify-between p-6 sm:p-4 rounded-2xl bg-white border border-gray-200/90 ${item.accentGlow} shadow-sm transition-all duration-300`}
                             >
                                 {/* Top Gradient Highlight Bar */}
                                 <div className={`absolute top-0 left-0 right-0 h-1.5 rounded-t-2xl   opacity-80 group-hover:opacity-100 transition-opacity`} />
@@ -101,12 +101,12 @@ export default function Service() {
                                      
 
                                     {/* Title */}
-                                    <h3 className="text-xl  sm:text-[21px] text-[#2B7FFF] group-hover:text-blue-600 font-semibold mb-3 transition-colors">
+                                    <h3 className="text-[20px] text-center   text-[#2B7FFF] group-hover:text-blue-600 font-semibold mb-3 transition-colors">
                                         {item.title}
                                     </h3>
 
                                     {/* Description */}
-                                    <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                                    <p className="text-gray-600 text-[14px] text-justify leading-relaxed mb-6">
                                         {item.description}
                                     </p>
                                 </div>
