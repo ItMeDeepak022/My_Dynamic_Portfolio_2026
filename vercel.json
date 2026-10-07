@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/admin",
-      "destination": "https://fronted-dashboard-deploy.vercel.app",
+      "destination": "https://portfolioadmin-dashboard.vercel.app",
       "permanent": false
     }
   ]
