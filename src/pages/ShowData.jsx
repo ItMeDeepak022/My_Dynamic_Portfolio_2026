@@ -103,15 +103,15 @@ export default function ShowData() {
                                         className='flex md:justify-start justify-center items-center gap-3 text-white mt-5'
                                     >
                                         <motion.button
-                                            whileHover={{ scale: 1.06, boxShadow: "0 0 20px rgba(34,211,238,0.6)" }}
+                                            whileHover={{ scale: 1.06, }}
                                             whileTap={{ scale: 0.95 }}
-                                            className='cursor-pointer px-4 sm:px-5 py-3 bg-[blue] rounded-2xl hover:bg-[purple] hover:text-cyan-400 transition-colors duration-300'
+                                            className='cursor-pointer px-4 sm:px-5 py-3 bg-[cyan] rounded-2xl hover:bg-[#AD46FF] hover:text-white transition-colors duration-300'
                                         > <a href="#Contact" >Get Touch</a> </motion.button>
 
                                         <motion.button
-                                            whileHover={{ scale: 1.06, boxShadow: "0 0 20px rgba(34,211,238,0.6)" }}
+                                            whileHover={{ scale: 1.06, }}
                                             whileTap={{ scale: 0.95 }}
-                                            className='cursor-pointer px-4 sm:px-5 py-3 bg-[blue] rounded-2xl hover:bg-[purple] hover:text-cyan-400 transition-colors duration-300'
+                                            className='cursor-pointer px-4 sm:px-5 py-3 bg-[cyan] rounded-2xl hover:bg-[#AD46FF] hover:text-white transition-colors duration-300'
                                         > <a href={obj.resumeLetter}
                                         >Download CV</a> </motion.button>
                                     </motion.div>
@@ -141,7 +141,7 @@ export default function ShowData() {
                                         <img
                                             src={obj.profileImg}
                                             alt="Profile"
-                                            className="w-full object-contain object-top absolute md:top-[-33px] top-[-25px]  left-[0px] "
+                                            className="w-full object-contain object-top absolute md:top-[-15px] top-[-12px]  left-[0px] "
                                         />
                                     </motion.div>
                                 )
