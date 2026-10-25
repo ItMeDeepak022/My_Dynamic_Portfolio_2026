@@ -13,6 +13,7 @@ import Education from './pages/Educational'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import { font } from './config/font'
 import apiClient from './services/apiClient'
+import ApiHealth from './services/Statusbar'
 
 export default function Home() {
 
@@ -42,6 +43,7 @@ export default function Home() {
 
   return (
     <>
+      <ApiHealth />
       {loading ? (
         <div className={` ${font.poppins} ${font.regular} fixed inset-0 flex flex-col gap-10 items-center justify-center bg-[#0000009e] z-50`}>
 
@@ -58,9 +60,6 @@ export default function Home() {
         </div>
       ) : (
         <div id="top" className={`${font.poppins} ${font.regular} w-full`} >
-
-
-
           <Header />
           <ShowData />
           <About />
