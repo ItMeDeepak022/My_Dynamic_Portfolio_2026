@@ -72,7 +72,7 @@ export default function ShowData() {
                             <motion.div
                                 whileHover={{ scale: 1.15, rotate: -8 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="w-12 h-12 text-blue-800 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
+                                className="w-12 h-12  text-black sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
                             >
                                 <a href={'https://github.com/ItMeDeepak022'}><FaGithub className='text-[28px]  sm:text-[32px]' /></a>
                             </motion.div>
@@ -80,7 +80,7 @@ export default function ShowData() {
                             <motion.div
                                 whileHover={{ scale: 1.15, rotate: 8 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="w-12 h-12 text-blue-800 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white hover:bg-[#0A66C2] hover:text-white transition-colors duration-300 cursor-pointer"
+                                className="w-12 h-12  text-blue-700 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white hover:bg-[#0A66C2] hover:text-white transition-colors duration-300 cursor-pointer"
                             >
                                 <a href="https://www.linkedin.com/in/deepakkushwaha022/"><FaLinkedinIn className='text-[28px]  sm:text-[32px]' /></a>
                             </motion.div>
@@ -88,7 +88,7 @@ export default function ShowData() {
                             <motion.div
                                 whileHover={{ scale: 1.15, rotate: -8 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="w-12 h-12 text-blue-800 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white hover:text-[red] hover:bg-white transition-colors duration-300 cursor-pointer"
+                                className="w-12 h-12  text-red-700 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white hover:text-[red] hover:bg-white transition-colors duration-300 cursor-pointer"
                             >
                                 <a href="https://www.instagram.com/___its_silentboy/"><FaInstagram className='text-[28px]  sm:text-[32px]' /></a>
                             </motion.div>
