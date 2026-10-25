@@ -11,6 +11,7 @@ import apiClient from "../services/apiClient";
 import { motion } from "framer-motion";
 import useScrollDirection from "../hooks/useScrollDirection";
 import { fadeVariants, scrollViewport } from "../hooks/scrollVariants";
+import { ExternalLink } from "lucide-react";
 
 export default function Projects() {
 
@@ -78,7 +79,7 @@ export default function Projects() {
                                             whileHover={{ scale: 1.03, y: -8 }}
                                             transition={{ duration: 0.3, ease: "easeOut" }}
                                             className=" rounded-lg overflow-hidden shadow-lg   border border-purple-600"
-                                        > 
+                                        >
 
                                             <img src={projectImg} alt="Project 1" className="w-full h-65 object-fill" />
 
@@ -89,12 +90,11 @@ export default function Projects() {
                                                 </p>
 
                                                 <motion.a
-                                                    whileHover={{ scale: 1.06 }}
-                                                    whileTap={{ scale: 0.95 }}
+                                                    
                                                     href={projectLink}
-                                                    className="inline-block text-[14px] bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded transition-colors"
+                                                    className="max-w-[45%] mx-auto flex items-center justify-center gap-3 rounded-[25px] bg-blue-600 hover:bg-blue-700 text-white py-2 px-6  transition-colors"
                                                 >
-                                                    Live View
+                                                    <div className="text-[20px">Live View</div> <ExternalLink />
                                                 </motion.a>
                                             </div>
 

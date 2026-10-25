@@ -72,25 +72,25 @@ export default function ShowData() {
                             <motion.div
                                 whileHover={{ scale: 1.15, rotate: -8 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-gray-300 hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
+                                className="w-12 h-12 text-blue-800 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
                             >
-                                <a href={'https://github.com/ItMeDeepak022'}><FaGithub className='text-[28px] sm:text-[32px]' /></a>
+                                <a href={'https://github.com/ItMeDeepak022'}><FaGithub className='text-[28px]  sm:text-[32px]' /></a>
                             </motion.div>
 
                             <motion.div
                                 whileHover={{ scale: 1.15, rotate: 8 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-gray-300 hover:bg-[#0A66C2] hover:text-white transition-colors duration-300 cursor-pointer"
+                                className="w-12 h-12 text-blue-800 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white hover:bg-[#0A66C2] hover:text-white transition-colors duration-300 cursor-pointer"
                             >
-                                <a href="https://www.linkedin.com/in/deepakkushwaha022/"><FaLinkedinIn className='text-[28px] sm:text-[32px]' /></a>
+                                <a href="https://www.linkedin.com/in/deepakkushwaha022/"><FaLinkedinIn className='text-[28px]  sm:text-[32px]' /></a>
                             </motion.div>
 
                             <motion.div
                                 whileHover={{ scale: 1.15, rotate: -8 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-gray-300 hover:text-[red] hover:bg-white transition-colors duration-300 cursor-pointer"
+                                className="w-12 h-12 text-blue-800 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white hover:text-[red] hover:bg-white transition-colors duration-300 cursor-pointer"
                             >
-                                <a href="https://www.instagram.com/___its_silentboy/"><FaInstagram className='text-[28px] sm:text-[32px]' /></a>
+                                <a href="https://www.instagram.com/___its_silentboy/"><FaInstagram className='text-[28px]  sm:text-[32px]' /></a>
                             </motion.div>
                         </motion.div>
 
@@ -105,13 +105,13 @@ export default function ShowData() {
                                         <motion.button
                                             whileHover={{ scale: 1.06, }}
                                             whileTap={{ scale: 0.95 }}
-                                            className='cursor-pointer px-4 sm:px-5 py-3 bg-[cyan] rounded-2xl hover:bg-[#AD46FF] hover:text-white transition-colors duration-300'
+                                            className='cursor-pointer px-4 sm:px-5 py-3 bg-blue-700 rounded-2xl hover:bg-[#AD46FF] hover:text-white transition-colors duration-300'
                                         > <a href="#Contact" >Get Touch</a> </motion.button>
 
                                         <motion.button
                                             whileHover={{ scale: 1.06, }}
                                             whileTap={{ scale: 0.95 }}
-                                            className='cursor-pointer px-4 sm:px-5 py-3 bg-[cyan] rounded-2xl hover:bg-[#AD46FF] hover:text-white transition-colors duration-300'
+                                            className='cursor-pointer px-4 sm:px-5 py-3 bg-blue-700 rounded-2xl hover:bg-[#AD46FF] hover:text-white transition-colors duration-300'
                                         > <a href={obj.resumeLetter}
                                         >Download CV</a> </motion.button>
                                     </motion.div>
