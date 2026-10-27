@@ -92,7 +92,7 @@ export default function Projects() {
                                                 <motion.a
                                                     
                                                     href={projectLink}
-                                                    className="max-w-[45%] mx-auto flex items-center justify-center gap-3 rounded-[25px] bg-blue-600 hover:bg-blue-700 text-white py-2 px-6  transition-colors"
+                                                    className="lg:max-w-[45%] max-w-[50%] mx-auto flex items-center justify-center gap-3 rounded-[25px] bg-blue-600 hover:bg-blue-700 text-white py-2 px-6  transition-colors"
                                                 >
                                                     <div className="text-[20px">Live View</div> <ExternalLink />
                                                 </motion.a>
